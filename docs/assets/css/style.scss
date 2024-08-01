@@ -25,6 +25,12 @@ h1 {
     color: #211c3d;
 }
 
+h1+p {
+    font: 0.7em/1em "Inter Tight", sans-serif;
+    text-align: center;
+    color: #888;
+}
+
 h1 img {
     vertical-align: middle;
     margin-top: -4px;
@@ -53,8 +59,14 @@ p {
 }
 
 .content {
-    width: 980px;
-    margin: auto;
+    padding: 0px 40px;
+    margin: 0px auto;
+}
+
+@media screen and (min-width: 1024px) {
+    .content {
+        width: 980px;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -66,7 +78,7 @@ p {
         color: #eee;
     }
 
-    h2 { 
+    h2, { 
         color: #888;
     }
 
@@ -75,7 +87,7 @@ p {
     }
 
     p {
-        color: #bbb;
+        color: #dadada;
     }
 
     code, pre {
