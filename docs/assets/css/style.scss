@@ -11,6 +11,8 @@
 body {
     font: 1.15em/1.6em Georgia, Verdana, "Times New Roman", serif;
     color: #697077;
+    padding: 0;
+    margin: 0;
 }
 
 code, pre {
@@ -63,9 +65,21 @@ p {
     margin: 0px auto;
 }
 
-@media screen and (min-width: 1024px) {
+@media only screen and (max-width: 640px) {
+    .content {
+        padding: 0px 20px;
+    }
+
+    h1 img {
+        display: block;
+        margin: 0 auto;
+     }
+}
+
+@media only screen and (min-width: 1024px) {
     .content {
         width: 980px;
+        padding: 0px;
     }
 }
 
