@@ -23,7 +23,7 @@ code, pre {
 h1 {
     font: bold 1.2em/2em "Inter Tight", sans-serif;
     text-align: center;
-    margin: 20px auto;
+    margin: 60px auto 0px auto;
     color: #211c3d;
 }
 
@@ -31,6 +31,7 @@ h1+p {
     font: 0.7em/1em "Inter Tight", sans-serif;
     text-align: center;
     color: #888;
+    margin-bottom: 80px;
 }
 
 h1 img {
@@ -89,7 +90,8 @@ p {
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: black;
+        background-color: rgba(0.706, 0.706, 0.706, 1);
+        border-top: 4px solid #452be9;
     }
 
     h1 { 
