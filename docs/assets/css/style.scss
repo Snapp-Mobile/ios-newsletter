@@ -22,16 +22,14 @@ code, pre {
 
 h1 {
     font: bold 1.2em/2em "Inter Tight", sans-serif;
-    text-align: center;
-    margin: 60px auto 0px auto;
+    padding: 60px 20px 0px 20px;
     color: #211c3d;
 }
 
 h1+p {
     font: 0.7em/1em "Inter Tight", sans-serif;
-    text-align: center;
     color: #888;
-    margin-bottom: 80px;
+    padding: 0 20px 40px 20px;
 }
 
 h1 img {
@@ -98,7 +96,7 @@ p {
         color: #eee;
     }
 
-    h2, { 
+    h2 { 
         color: #888;
     }
 
