@@ -1,47 +1,45 @@
 ---
 layout: default
-title: Snapp Mobile iOS Newsletter 1
-issue: 1
-date: 2024-08-02
+title: Snapp Mobile iOS Newsletter 2
+issue: 2
+date: 2024-08-09
 ---
 ## Swift
 
-### [Announcing Swift Homomorphic Encryption](https://www.swift.org/blog/announcing-swift-homomorphic-encryption/)
+### [Using @DebugDescription in Xcode 16](https://digitalbunker.dev/debug-description-macro-xcode-16/)
 
-Homomorphic encryption (HE) is a cryptographic technique that enables computation on encrypted data without revealing the underlying unencrypted data to the operating process. It provides a means for clients to send encrypted data to a server, which operates on that encrypted data and returns a result that the client can decrypt. During the execution of the request, the server itself never decrypts the original data or even has access to the decryption key. Such an approach presents new opportunities for cloud services to operate while protecting the privacy and security of a user's data, which is obviously highly attractive for many scenarios.
+Debugging can be tricky, especially with custom types. Clear and informative debug output is essential for understanding the behavior of your code. That's where the `CustomDebugStringConvertible` protocol and `@DebugDescription` macro come in. In this article, we are taking a look at how to work with this protocol and how to use this new macro in Xcode 16 to make debugging even easier.
 
-### [Swift-foundation now available as part of the nightly toolchains for Swift 6.0](https://forums.swift.org/t/swift-foundation-now-available/73530)
+### [iOS App Reverse Engineering](https://medium.com/@bellaposa/ios-app-reverse-engineering-de33ab6ca462)
 
-As part of the commitment to investing in Swift across all platforms, the Swift core team had just announced the availability of the new all-Swift Foundation library as part of the Swift 6 nightly toolchain, supporting Linux and Windows. 🏗️🏗️🏗️ 
-
-Even better - no adoption is required. If you import `Foundation` on Linux or Windows today, you will be using the new implementation. You can now also use `FoundationEssentials` or `FoundationInternationalization` to get a focused subset of the complete Foundation API.
-
-### [Updated App Review Guidelines guidelines now available](https://developer.apple.com/news/?id=ty0avr2s)
-
-The App Review Guidelines have been revised to support updated policies and upcoming features, and to provide clarification.
-
-### [Trigger property observers from initializers in Swift](https://nilcoalescing.com/blog/TriggerPropertyObserversFromInitializersInSwift/)
-
-In Swift, property observers such as `willSet` and `didSet` are not called when a property is set in an initializer. This is by design, as the initializer's purpose is to set up the initial state of an object, and during this phase, the object is not yet fully initialized. However, if we need to perform some actions similar to what we'd do in property observers during initialization, there are some workarounds as [Natalia Panferova](https://x.com/natpanferova) discovers
-
-### [Advanced Async Sequences in Swift](https://swiftonserver.com/advanced-async-sequences/)
-
-`AsyncSequence`s are very prevalent in Swift, and are becoming more prominent in macOS and iOS apps as well. Like other structured concurrency features, `AsyncSequence`s enable structured programming. This makes it easier for you to reason about your code, and write more robust code free of data races.
+Through reverse engineering, the author of this article was eager to see how much he could tinker with a simple app. He ended up tweaking the pin logic and replaced the usual messages with a playful “Hello World” popup. Hop on to discover how!
 
 ## UI
 
-### [Navigation patterns in SwiftUI](https://azamsharp.com/2024/07/29/navigation-patterns-in-swiftui.html)
+### [Trigger value pattern in SwiftUI](http://swiftwithmajid.com/2024/04/02/trigger-value-pattern-in-swiftui/)
 
-Navigation has often been a challenge in SwiftUI applications. Initially, SwiftUI introduced `NavigationView`, which was later replaced by `NavigationStack` in iOS 16.
+The recent version of the SwiftUI framework introduces a trigger value pattern across its APIs. Trigger value allows us to attach a view modifier that runs its action whenever the trigger value changes. You can find this pattern while using sensory feedback or launching keyframe animation in SwiftUI. Learn how to build custom view modifiers using trigger value pattern with this article.
 
-`NavigationStack` enhanced navigation by enabling dynamic and programmatic routing, and it also offered ways to centralize routes for the entire application. In this article, Mohammad Azam explores some common navigation patterns that can be employed when building SwiftUI applications.
+### [SwiftUI app lifecycle: issues with ScenePhase and using AppDelegate adaptors](https://www.jessesquires.com/blog/2024/06/29/swiftui-scene-phase/)
 
-### [Demystify SwiftUI containers](https://developer.apple.com/wwdc24/10146)
+SwiftUI introduced the `ScenePhase` API in iOS 14 and macOS 11. This was SwiftUI’s answer to handling application lifecycle events. At the same time, SwiftUI introduced `UIApplicationDelegateAdaptor` for iOS and `NSApplicationDelegateAdaptor` for macOS, which allow you to provide an `AppDelegate` on both platforms to receive additional application lifecycle events and other events that were missing from SwiftUI at the time. Unfortunately, many of those application event APIs are still missing and `ScenePhase` has a number of bugs (or at least, unexpected behavior).
 
-This session form the WWDC 2024 teaches us about the capabilities of SwiftUI container views and helps us build a mental model for how subviews are managed by their containers. Learn how to leverage new APIs to build your own custom containers, create modifiers to customize container content, and give your containers that extra polish that helps your apps stand out.
+## Utils
 
-## Xcode tips
+### [Unobtrusive and testable issue reporting](https://www.pointfree.co/blog/posts/147-unobtrusive-and-testable-issue-reporting)
 
-### [Paste in Xcode's navigator area to create a file](https://x.com/v_pradeilles/status/1818610834232508534)
+It is always exciting to check on a new library from Point-Free and this time it's one about Issue Reporting. The library provides tools to report issues in your application and library code as Xcode runtime warnings, breakpoints, assertions, and do so in a testable manner.
 
-[Vincent Pradeilles](https://x.com/v_pradeilles) shared a cool new feature available on Xcode 16. You can now paste content into the Project Navigator, and Xcode will automatically create a new file with the approriate name. Neat!
+### [node-swift](https://swiftpackageindex.com/kabiroberai/node-swift)
+
+From time to time we stumble upon some interesting Swift packages that go beyond what we thought was possible with the language. `node-swift` lets you write native Node modules in Swift that can be used with node.js, NPM and Electron. It's idiomatic, fast, and works on macOS, Linux and Windows.
+
+## Privacy
+
+### [App Tracking Transparency and IDFA on iOS](https://medium.com/@sandeep.kumar.ece16/swift-app-tracking-transparency-and-idfa-on-ios-424cc0668adc)
+
+It's been a while since Apple had introduced some Privacy-related changes with the `AppTrackingFramework` but it was only recently that we saw them requiring apps that open links by using an in-app browser to prompt the user for permission to get tracked. Read on to discover how to integrate this with your app.
+
+### [Meet AccessorySetupKit](https://developer.apple.com/wwdc24/10203)
+
+There's a new framework (iOS 18 and above) that allows you to display a beautiful pairing dialog with an image of your Bluetooth or Wi-Fi accessory — no trip to the Settings app required. Discover how to improve privacy by pairing only your app with an accessory with this WWDC session. And learn how you can migrate existing accessories so they can be managed by `AccessorySetupKit`.
