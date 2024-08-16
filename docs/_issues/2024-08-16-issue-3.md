@@ -32,7 +32,7 @@ The Swift macros feature became very popular last year in the community and insi
 
 ### [Deep Dive into SwiftUI Containers: Key Takeaways from WWDC24](https://medium.com/@v_voiko/deep-dive-into-swiftui-containers-key-takeaways-from-wwdc24-99e08a40e80c)
 
-Our very own Volodymyr Voiko wrote an extensive article covering one of the major SwiftUI enhancements that were announced at this year's WWDC - containter views. Hop on a journey with him as he looks at the new APIs, builds a custom layout from scratch using them and comes with some awesome recommendations on how to optimize it.
+Our very own [Volodymyr Voiko](https://x.com/v_voiko) wrote an extensive article covering one of the major SwiftUI enhancements that were announced at this year's WWDC - containter views. Hop on a journey with him as he looks at the new APIs, builds a custom layout from scratch using them and comes with some awesome recommendations on how to optimize it.
 
 ### [AsyncCanvas in SwiftUI](https://medium.com/@adurymanov/asynccanvas-in-swiftui-a80deea7f1b9)
 
