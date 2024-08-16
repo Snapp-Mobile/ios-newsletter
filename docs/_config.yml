@@ -1,1 +1,6 @@
 theme: jekyll-theme-minimal
+
+collections:
+  issues:
+    output: true
+    # permalink: /:collection/:name:output_ext
