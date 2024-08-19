@@ -23,16 +23,19 @@
     </script>
   </head>
   <body>
-    <div class="content">
+    <div class="archive">
       <h1><img alt="Snapp Mobile" src = "https://assets-global.website-files.com/635810b251b86c0d78f76c20/635811021547a1def077ef72_Snapp%20Mobile%20Logo.svg" /> iOS Newsletter Archive</h1>
+
+      <div class="divider"></div>
       
       {% for issue in site.issues reversed %}
 
-      <h3><a href="{{issue.url}}">{{issue.title}}</a></h3>
+      <h3><a href="{{issue.url}}">Issue {{issue.issue}}</a></h3>
       <p class="pubdate">{{issue.date | date: "%B %-d, %Y"}}</p>
 
       {% endfor %}
     
+      {% include issue_footer.html archive_link=false %}
     </div>
   </body>
 </html>

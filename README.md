@@ -14,3 +14,5 @@ Once you have Jekyll installed you can clone the respository and do
 cd docs
 bundle exec jekyll serve
 ```
+
+Visual Studio Code users can use the `Command` + `Shift` + `B` to run the default preconfigured task intead.

@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-{% seo %}
+    {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/inter-tight" type="text/css"/>
     <!--[if lt IE 9]>
@@ -26,10 +25,13 @@
     <div class="content">
       <h1><img alt="Snapp Mobile" src = "https://assets-global.website-files.com/635810b251b86c0d78f76c20/635811021547a1def077ef72_Snapp%20Mobile%20Logo.svg" /> iOS Newsletter</h1>
 
-      <p>Issue {{page.issue}} • {{page.date | date: "%B %-d, %Y"}}</p>
+      <p class="issue_meta">Issue {{page.issue}} • {{page.date | date: "%B %-d, %Y"}}</p>
+
+      <div class="divider"></div>
       
       {{ content }}
     
+      {% include issue_footer.html archive_link=true %}
     </div>
   </body>
 </html>
