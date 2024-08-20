@@ -23,15 +23,11 @@
   </head>
   <body>
     <div class="content">
-      <h1><a href="/index.html"><img alt="Snapp Mobile" src = "https://assets-global.website-files.com/635810b251b86c0d78f76c20/635811021547a1def077ef72_Snapp%20Mobile%20Logo.svg" /> iOS Newsletter</a></h1>
-
-      <p class="issue_meta">Issue {{site.issues.last.issue}} • {{site.issues.last.date | date: "%B %-d, %Y"}}</p>
-
-      <div class="divider"></div>
+      {% include header.html page=site.issues.last %}
       
       {{ site.issues.last.content }}
 
-      {% include issue_footer.html archive_link=true %}
+      {% include footer.html archive_link=true %}
     </div>
   </body>
 </html>
