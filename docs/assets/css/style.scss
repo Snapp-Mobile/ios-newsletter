@@ -47,6 +47,12 @@ p.issue_meta {
     padding: 0 20px 20px 20px;
 }
 
+p.tags {
+    font: 0.9em/1.2em Georgia, Verdana, "Times New Roman", serif;
+    padding: 0 20px;
+    color: #666;
+}
+
 h1 img {
     vertical-align: middle;
     margin-top: -4px;
@@ -71,14 +77,9 @@ h3 {
     margin: 40px 0 10px 0px;
 }
 
-.content h3 {
+.content h3, .archive h3 {
     border-left: 4px solid #452be9;
     padding: 0 20px 0 16px;
-}
-
-.archive h3 {
-    padding: 0 20px;
-    text-align: center
 }
 
 h3 a, h3 a:hover {
@@ -93,7 +94,7 @@ p {
 }
 
 .archive p {
-    text-align: center;
+   // text-align: center;
 }
 
 .archive .issue_meta {
@@ -178,6 +179,10 @@ p {
 
     p {
         color: #cacaca;
+    }
+
+    p.tags { 
+        color: #ccc;
     }
 
     code, pre {

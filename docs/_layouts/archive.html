@@ -29,6 +29,7 @@
       {% for issue in site.issues reversed %}
 
       <h3><a href="{{issue.url}}">Issue {{issue.issue}}</a></h3>
+      <p class="tags">{{issue.tags | join: "  &#8226; "}}</p>
       <p class="pubdate">{{issue.date | date: "%B %-d, %Y"}}</p>
 
       {% endfor %}
