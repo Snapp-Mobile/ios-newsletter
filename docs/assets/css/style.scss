@@ -1,12 +1,22 @@
 ---
 ---
 
-@import "{{ site.theme }}";
-
 * {
     padding: 0;
     margin: 0;
 }
+
+a, a:hover {
+    font-weight: normal;
+    color: #452be9;
+    text-decoration: none;
+}
+
+.content, .archive {
+    padding: 0px 40px;
+    margin: 0px auto;
+}
+
 
 body {
     font: 1.15em/1.6em Georgia, Verdana, "Times New Roman", serif;
@@ -22,14 +32,24 @@ code, pre {
 
 h1 {
     font: bold 1.2em/2em "Inter Tight", sans-serif;
-    padding: 60px 20px 0px 20px;
+    padding: 30px 20px 0px 20px;
     color: #211c3d;
 }
 
-h1+p {
+h1 a, h1 a:hover {
+    font-weight: bold;
+    color: #211c3d;
+}
+
+p.issue_meta {
     font: 0.7em/1em "Inter Tight", sans-serif;
-    color: #888;
-    padding: 0 20px 40px 20px;
+    padding: 0 20px 20px 20px;
+}
+
+p.tags {
+    font: 0.9em/1.45em Georgia, Verdana, "Times New Roman", serif;
+    padding: 0 20px;
+    color: #666;
 }
 
 h1 img {
@@ -54,11 +74,15 @@ h3 {
     font: bold 1.2em "Inter Tight", sans-serif;
     color: #211c3d;
     margin: 40px 0 10px 0px;
+}
+
+.content h3, .archive h3 {
     border-left: 4px solid #452be9;
     padding: 0 20px 0 16px;
 }
 
-h3 a {
+h3 a, h3 a:hover {
+    font-weight: bold;
     color: #211c3d;
     text-decoration: none;
 }
@@ -68,13 +92,39 @@ p {
     padding: 0px 20px;
 }
 
-.content {
-    padding: 0px 40px;
-    margin: 0px auto;
+.footer {
+    margin-top: 40px;
+}
+
+.divider {
+    display: block; 
+    height: 1px; 
+    border: 0; 
+    border-top: 1px solid #ccc; 
+    margin: 1em 0; 
+    padding: 0; 
+}
+
+.footer ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    font-size: 0.9em;
+    margin: 20px 0;
+}
+
+.footer ul li {
+    list-style-type: none;
+    font: 0.8em/1em "Inter Tight", sans-serif;
+}
+
+.footer a {
+    text-transform: uppercase;
+    font-weight: normal;
 }
 
 @media only screen and (max-width: 640px) {
-    .content {
+    .content, .archive {
         padding: 0px 20px;
     }
 
@@ -85,19 +135,28 @@ p {
 }
 
 @media only screen and (min-width: 1024px) {
-    .content {
+    .content, .archive {
         width: 980px;
         padding: 0px;
     }
 }
 
 @media (prefers-color-scheme: dark) {
+    a, a:hover {
+        color: #8f80f2;
+    }
+
     body {
         background-color: rgba(0.706, 0.706, 0.706, 1);
         border-top: 4px solid #452be9;
+        color: #dadada;
     }
 
-    h1 { 
+    .divider {
+        border-top: 1px solid #222;   
+    }
+
+    h1, h1 a, h1 a:hover { 
         color: #eee;
     }
 
@@ -105,12 +164,16 @@ p {
         color: #888;
     }
 
-    h3, h3 a, a {
+    h3, h3 a, h3 a:hover {
         color: #eee;
     }
 
     p {
-        color: #dadada;
+        color: #cacaca;
+    }
+
+    p.tags { 
+        color: #ccc;
     }
 
     code, pre {
