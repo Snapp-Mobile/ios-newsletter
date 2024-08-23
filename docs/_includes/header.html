@@ -2,6 +2,25 @@
 
 {% if include.page %}
 <p class="issue_meta">Issue {{include.page.issue}} • {{include.page.date | date: "%B %-d, %Y"}}</p>
+<p class="issue_meta">
+    {% assign author = site.data.authors[include.page.author] %}
+    <div class="author_info">
+        <img class="author_avatar" src="{{ author.avatar }}" alt="Author Avatar"/>
+        <div class="author_details">
+            <p class="author_name">{{ author.name }}</p>
+            <div class="social_links">
+                <a href="{{ author.x }}" class="social_icon" aria-label="X">
+                    <!-- TODO: Use black/white svg based on mode -->
+                    <img src="/assets/img/x-logo-black.png" alt="X Icon" /> 
+                </a>
+                <a href="{{ author.github }}" class="social_icon" aria-label="GitHub">
+                    <!-- TODO: Use black/white svg based on mode -->
+                    <img src="/assets/img/github-mark.svg" alt="GitHub Icon" />
+                </a>
+            </div>
+        </div>
+    </div>
+</p>
 {% else if include.title %}
 <p class="issue_meta">{{include.title}}</p>
 {% endif %}
