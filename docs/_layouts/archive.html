@@ -27,10 +27,14 @@
       {% include header.html title="Archived Issues" %}
       
       {% for issue in site.issues reversed %}
+      {% assign author = site.data.authors[issue.author] %}
 
       <h3><a href="{{issue.url}}">Issue {{issue.issue}}</a></h3>
       <p class="tags">{{issue.tags | join: "  &#8226; "}}</p>
-      <p class="pubdate">{{issue.date | date: "%B %-d, %Y"}}</p>
+      <p class="pubdate">
+        {{issue.date | date: "%B %-d, %Y"}} by
+        <a rel="author" href="https://x.com/{{ author.x }}" title="{{ author.name }}">{{ author.name }}</a>
+      </p>
 
       {% endfor %}
     
