@@ -1,0 +1,87 @@
+---
+---
+
+.sib-form {
+    padding: 0;
+}
+
+.sib-form-block {
+    padding: 0;
+}
+
+.sib-form .entry__field {
+    margin: 0 20px;
+}
+
+#sib-container {
+    background: none;
+    padding: 0;
+}
+
+.brevo, .email, .optIn, .submit {
+    padding: 0px 0px 2em 0px;
+}
+
+.brevo p, .email .entry__specification, .optIn .entry__specification {
+    font: 0.8em/1.7em "Inter Tight", sans-serif;
+    color: #697077;
+}
+
+.email .entry__specification, .optIn .entry__specification {
+    padding: 0 20px;
+}
+
+.email .entry__label {
+    font: bold 1.2em "Inter Tight", sans-serif;
+    color: #211c3d;
+    margin: 10px 0 10px 0px;
+}
+
+.sib-form .entry__field {
+    border: 1px solid #ccc;
+}
+
+.content .email .entry__label {
+    border-left: 4px solid #452be9;
+    padding: 0 20px 0 16px;
+}
+
+.optIn .form__label-row {
+    padding: 0 20px;
+}
+
+.optIn p {
+    padding: 0;
+    font: 1.15em/1.6em Georgia, Verdana, "Times New Roman", serif;
+    color: #697077;
+}
+
+.submit .sib-form-block {
+    text-align: center;
+}
+
+.submit .sib-form-block__button {
+    margin: 0 auto;
+    background: #452be9;
+    color: #fff;
+}
+
+.submit .sib-form-block__button-with-loader {
+    min-width: 280px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .email .entry__label {
+        color: #eee;
+    }
+
+
+    .sib-form .entry__field {
+        background: #222;
+        border: 1px solid #444;
+    }
+
+    .optIn p {
+        color: #cacaca;
+    }
+}
