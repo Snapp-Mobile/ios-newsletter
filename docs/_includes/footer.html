@@ -1,10 +1,13 @@
 <div class="footer">
-<div class="divider"></div>
+    <div class="divider"></div>
 
-<ul>
-    <li>&copy; {{ site.time | date: "%Y"}} Snapp Mobile</li>
-    {% if include.archive_link %}
-    <li><a href="/archive.html">Archive</a></li>
-    {% endif %}
-</ul>
+    <ul>
+        <li>&copy; {{ site.time | date: "%Y"}} Snapp Mobile</li>
+        {% if include.subscribe_link %}
+        <li><a href="/subscribe.html">Subscribe</a></li>
+        {% endif %}
+        {% if include.archive_link %}
+        <li><a href="/archive.html">Archive</a></li>
+        {% endif %}
+    </ul>
 </div>

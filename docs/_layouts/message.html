@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-{% seo %}
+    {% seo %}
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/inter-tight" type="text/css"/>
     <!--[if lt IE 9]>
@@ -23,18 +22,12 @@
     </script>
   </head>
   <body>
-    <div class="archive">
-      {% include header.html title="Archived Issues" %}
+    <div class="content">
+      {% include header.html title=page.title %}
       
-      {% for issue in site.issues reversed %}
+      {{ content }}
 
-      <h3><a href="{{issue.url}}">Issue {{issue.issue}}</a></h3>
-      <p class="tags">{{issue.tags | join: "  &#8226; "}}</p>
-      <p class="pubdate">{{issue.date | date: "%B %-d, %Y"}}</p>
-
-      {% endfor %}
-    
-      {% include footer.html archive_link=false subscribe_link=true %}
+      {% include footer.html archive_link=true subscribe_link=true %}
     </div>
   </body>
 </html>
