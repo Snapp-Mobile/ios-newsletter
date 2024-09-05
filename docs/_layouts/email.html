@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark only">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/inter-tight" type="text/css"/>
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        :root{
+           color-scheme: light dark;
+            supported-color-schemes: light dark;
+        }
+        
+        {{ site.data.styles }}
+    </style>
+  </head>
+  <body>
+    <div class="content">
+        {% include email_header.html page=site.issues.last %}
+        
+        {{ site.issues.last.content }}
+  
+        {% include email_footer.html archive_link=true subscribe_link=true %}
+    </div>
+  </body>
+</html>
