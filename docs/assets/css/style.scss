@@ -71,7 +71,7 @@ p.pubdate {
 }
 
 h3 {
-    font: bold 1.2em "Inter Tight", sans-serif;
+    font: bold 1.2em/1.6em "Inter Tight", sans-serif;
     color: #211c3d;
     margin: 40px 0 10px 0px;
 }
@@ -107,7 +107,7 @@ p {
 
 .footer ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     padding: 0px 20px;
     font-size: 0.9em;
     margin: 20px 0;
@@ -116,6 +116,19 @@ p {
 .footer ul li {
     list-style-type: none;
     font: 0.8em/1em "Inter Tight", sans-serif;
+    padding: 0 20px 0 0;
+}
+
+.footer ul li {
+    flex-grow: 0;
+}
+
+.footer ul li:first-child {
+    flex-grow: 4;
+}
+
+.footer ul li:last-child {
+    padding: 0;
 }
 
 .footer a {
