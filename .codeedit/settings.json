@@ -1,8 +1,8 @@
 {
   "tasks" : [
     {
-      "command" : "cd docs && \/opt\/homebrew\/opt\/ruby\/bin\/bundle exec jekyll serve",
-      "name" : "Jekyll serve"
+      "name" : "Jekyll serve",
+      "command" : "cd docs && \/opt\/homebrew\/opt\/ruby\/bin\/bundle exec jekyll serve"
     }
   ]
 }
