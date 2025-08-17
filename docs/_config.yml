@@ -4,3 +4,8 @@ collections:
   issues:
     output: true
     # permalink: /:collection/:name:output_ext
+defaults:
+  - scope:
+      path: "assets/img"
+    values:
+      image: true
