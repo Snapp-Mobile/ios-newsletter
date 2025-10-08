@@ -16,3 +16,7 @@ bundle exec jekyll serve
 ```
 
 Visual Studio Code users can use the `Command` + `Shift` + `B` to run the default preconfigured task intead.
+
+<!--
+<a rel="me" href="https://mastodon.social/@ios_newsletter_snapp">Mastodon</a>
+-->
