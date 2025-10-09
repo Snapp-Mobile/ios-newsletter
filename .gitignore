@@ -2,4 +2,4 @@ docs/.jekyll-cache
 docs/_site
 docs/Gemfile
 docs/Gemfile.lock
-docs/.DS_Store
+.DS_Store
