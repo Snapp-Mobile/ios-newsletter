@@ -112,6 +112,7 @@ p {
 .footer ul {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     padding: 0px 20px;
     font-size: 0.9em;
     margin: 20px 0;
@@ -121,14 +122,18 @@ p {
     list-style-type: none;
     font: 0.8em/1em "Inter Tight", sans-serif;
     padding: 0 20px 0 0;
+    display: flex;
+    align-items: center;
 }
 
 .footer ul li {
     flex-grow: 0;
 }
 
-.footer ul li:first-child {
-    flex-grow: 4;
+.footer ul li:nth-child(2) {
+    flex-grow: 1;
+    justify-content: flex-end;
+    gap: 20px;
 }
 
 .footer ul li:last-child {
@@ -138,6 +143,21 @@ p {
 .footer a {
     text-transform: uppercase;
     font-weight: normal;
+}
+
+.footer .social-links a {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+.footer .social-links svg {
+    width: 20px;
+    height: 20px;
+}
+
+.footer .social-links a:last-child svg {
+    transform: scale(1.1);
 }
 
 @media only screen and (max-width: 640px) {
