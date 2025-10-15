@@ -2,7 +2,10 @@
     <div class="divider"></div>
 
     <ul>
-        <li>&copy; {{ site.time | date: "%Y"}} Snapp Mobile</li>
+        <li class="copyright">&copy; {{ site.time | date: "%Y"}} Snapp Mobile</li>
+        <li class="social-links">
+            {% include social_buttons.html %}
+        </li>
         {% if include.subscribe_link %}
         <li><a href="/subscribe.html">Subscribe</a></li>
         {% endif %}
