@@ -124,13 +124,10 @@ p {
     padding: 0 20px 0 0;
     display: flex;
     align-items: center;
-}
-
-.footer ul li {
     flex-grow: 0;
 }
 
-.footer ul li:nth-child(2) {
+.footer ul li.social-links {
     flex-grow: 1;
     justify-content: flex-end;
     gap: 20px;
@@ -166,9 +163,33 @@ p {
     }
 
     h1 img {
-        display: block;  
+        display: block;
         margin: 0;
      }
+
+    .footer ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .footer ul li {
+        white-space: nowrap;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .footer ul li.social-links {
+        justify-content: center;
+        white-space: normal;
+    }
+
+    .footer ul li.copyright {
+        order: 999;
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
