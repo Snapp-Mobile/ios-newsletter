@@ -21,7 +21,6 @@ jobs:
       - name: Set up dependencies
         run: |
           cd docs
-          bundle init
           bundle add jekyll jekyll-theme-minimal
 
       - name: Build site
