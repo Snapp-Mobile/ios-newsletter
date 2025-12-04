@@ -1,0 +1,36 @@
+name: Jekyll Build
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Set up Ruby 3.2 (disable bundler-cache since Gemfile creates dynamically)
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: false
+
+      # Initialize bundler and install required gems
+      # Note: No Gemfile is committed to the repo, so we generate it here
+      - name: Set up dependencies
+        run: |
+          cd docs
+          bundle init
+          bundle add jekyll jekyll-theme-minimal
+
+      - name: Build site
+        run: cd docs && bundle exec jekyll build
+
+      - name: Verify build
+        run: |
+          if [ ! -d "docs/_site" ]; then
+            echo "❌ Build failed: docs/_site directory not created"
+            exit 1
+          fi
+          echo "✅ Build successful"
