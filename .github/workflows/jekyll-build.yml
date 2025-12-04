@@ -18,7 +18,7 @@ jobs:
           bundler-cache: false
 
       - name: Initialize Bundler
-        run: cd docs && bundle init --force
+        run: cd docs && bundle init
 
       - name: Add Jekyll gem
         run: cd docs && bundle add jekyll
