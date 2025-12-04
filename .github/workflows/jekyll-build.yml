@@ -17,18 +17,21 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: false
 
+      - name: Initialize Bundler
+        run: cd docs && bundle init --force
+
+      - name: Add Jekyll gem
+        run: cd docs && bundle add jekyll
+
       - name: Install dependencies
-        run: bundle install
-        working-directory: docs
+        run: cd docs && bundle install
 
       - name: Build Jekyll site
-        run: bundle exec jekyll build
-        working-directory: docs
+        run: cd docs && bundle exec jekyll build
 
       - name: Check build output
         run: |
-          if [ ! -d "_site" ]; then
+          if [ ! -d "docs/_site" ]; then
             echo "Error: Jekyll build did not produce _site directory"
             exit 1
           fi
-        working-directory: docs
