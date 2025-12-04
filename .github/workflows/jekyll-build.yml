@@ -19,11 +19,11 @@ jobs:
 
       - name: Install dependencies
         run: bundle install
-        working-directory: ./docs
+        working-directory: docs
 
       - name: Build Jekyll site
         run: bundle exec jekyll build
-        working-directory: ./docs
+        working-directory: docs
 
       - name: Check build output
         run: |
@@ -31,4 +31,4 @@ jobs:
             echo "Error: Jekyll build did not produce _site directory"
             exit 1
           fi
-        working-directory: ./docs
+        working-directory: docs
