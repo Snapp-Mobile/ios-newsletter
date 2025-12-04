@@ -23,6 +23,9 @@ jobs:
       - name: Add Jekyll gem
         run: cd docs && bundle add jekyll
 
+      - name: Add jekyll-theme-minimal gem
+        run: cd docs && bundle add jekyll-theme-minimal
+
       - name: Install dependencies
         run: cd docs && bundle install
 
