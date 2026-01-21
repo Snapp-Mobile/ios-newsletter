@@ -157,7 +157,34 @@ p {
     transform: scale(1.1);
 }
 
+@media only screen and (max-width: 768px) {
+    .header-main h1 {
+        font-size: 36px;
+        line-height: 40px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .header-meta-stack {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .header-illustration {
+        height: 150%;
+        right: 0;
+        top: 0;
+        bottom: auto;
+    }
+}
+
 @media only screen and (max-width: 640px) {
+    .header {
+        padding: 20px 40px 20px 40px;
+        margin: 0 -20px;
+    }
+
     .content, .archive {
         padding: 0px 20px;
     }
