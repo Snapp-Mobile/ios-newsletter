@@ -7,14 +7,14 @@
   <div class="header-main">
     {% if include.page %}
     <div class="header-title">
-      {{ site.title }}
+      <span class="title-text">{{ site.title }}</span>
       <div class="header-meta-stack">
         <span class="header-meta-inline">Issue {{ include.page.issue }}</span>
         <span class="header-meta-inline">{{ include.page.date | date: "%B %-d, %Y" }}</span>
       </div>
     </div>
     {% elsif include.title %}
-    <div class="header-title">{{ include.title }}</div>
+    <div class="header-title"><span class="title-text">{{ include.title }}</span></div>
     {% endif %}
   </div>
 </header>
