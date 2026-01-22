@@ -1,4 +1,5 @@
 theme: jekyll-theme-minimal
+title: "Snapp Mobile iOS Newsletter"
 
 collections:
   issues:

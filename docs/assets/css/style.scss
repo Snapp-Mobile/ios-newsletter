@@ -255,6 +255,19 @@ h3 a, h3 a:hover {
     text-decoration: none;
 }
 
+h4 {
+    font-family: "Geist", sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: 0;
+    color: #211c3d;
+    vertical-align: middle;
+    margin: 40px 0 10px 0;
+    padding: 0;
+    border: none;
+}
+
 p {
     margin: 8px 0;
     padding: 0px 20px;
@@ -370,7 +383,7 @@ p.btn-wrapper {
 
 @media only screen and (max-width: 640px) {
     .header {
-        padding: 20px 40px 20px 40px;
+        padding: 20px;
         margin: 0 -20px;
     }
 
@@ -428,6 +441,10 @@ p.btn-wrapper {
     }
 
     h3, h3 a, h3 a:hover {
+        color: #eee;
+    }
+
+    h4 {
         color: #eee;
     }
 

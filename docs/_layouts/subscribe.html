@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="og:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
-    <meta name="image" property="og:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
-    <meta name="og:title" content="Snapp Mobile iOS Newsletter | {{ page.title }}">
+    <meta property="og:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
+    <meta property="og:title" content="{{ site.title }} | {{ page.title }}">
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
-    <meta name="twitter:title" content="Snapp Mobile iOS Newsletter | {{ page.title }}">
-    <title>Snapp Mobile iOS Newsletter | {{ page.title }}</title>
+    <meta name="twitter:title" content="{{ site.title }} | {{ page.title }}">
+    <title>{{ site.title }} | {{ page.title }}</title>
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/inter-tight" type="text/css"/>
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist-mono" type="text/css"/>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBZLB3RVT"></script>
     <script>
@@ -79,7 +76,7 @@
                 </div>
               </div>
               <div class="brevo">
-                <div class="sib-form__declaration" style="direction:ltr">
+                <div class="sib-form__declaration">
                   <div class="declaration-block-icon">
                     <svg class="icon__SVG" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg">
                       <defs>
@@ -97,11 +94,11 @@
               </div>
               <div class="submit">
                 <div class="sib-form-block">
-                  <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                  <button class="sib-form-block__button sib-form-block__button-with-loader btn" form="sib-form" type="submit">
                     <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
                       <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
                     </svg>
-                    SUBSCRIBE
+                    Subscribe
                   </button>
                 </div>
               </div>
