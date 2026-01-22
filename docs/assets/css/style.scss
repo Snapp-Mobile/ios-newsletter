@@ -207,7 +207,11 @@ code, pre {
 }
 
 p.tags {
-    font: 0.9em/1.45em Georgia, Verdana, "Times New Roman", serif;
+    font-family: "Geist", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0;
     padding: 0 20px;
     color: #666;
 }
@@ -226,8 +230,14 @@ h2 {
 }
 
 p.pubdate {
-    font: 0.8em/1em "Inter Tight", sans-serif;
-    color: #888; 
+    font-family: "Geist Mono", monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #888;
+    padding: 0 20px;
 }
 
 h3 {
@@ -244,6 +254,19 @@ h3 {
 .content h3, .archive h3 {
     border-left: 4px solid #E0F76E;
     padding: 0 20px 0 16px;
+}
+
+/* Archive page spacing */
+.archive h3 {
+    margin-bottom: 16px;
+}
+
+.archive p.pubdate {
+    margin: 0 0 16px 0;
+}
+
+.archive p.tags {
+    margin: 0 0 20px 0;
 }
 
 .content blockquote {
@@ -457,11 +480,11 @@ p.btn-wrapper {
     }
 
     p.pubdate {
-        color: #888;
+        color: #FFFFFF;
     }
 
     h3, h3 a, h3 a:hover {
-        color: #eee;
+        color: #FFFFFF;
     }
 
     h4 {
@@ -472,8 +495,8 @@ p.btn-wrapper {
         color: #cacaca;
     }
 
-    p.tags { 
-        color: #ccc;
+    p.tags {
+        color: #FFFFFF;
     }
 
     code, pre {
