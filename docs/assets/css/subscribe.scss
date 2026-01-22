@@ -21,8 +21,12 @@
     padding: 0;
 }
 
-.brevo, .email, .optIn, .submit {
+.brevo, .email, .optIn {
     padding: 0 0 2em 0;
+}
+
+.submit {
+    padding: 0;
 }
 
 .brevo p,
@@ -119,7 +123,10 @@
     background-color: #E0F76E !important;
     color: #2B2E3B !important;
     padding: 8.5px 42px 8.5px 18px !important;
+    font-family: "Geist Mono", monospace !important;
+    font-weight: 500 !important;
     font-size: 18px !important;
+    line-height: 1.6 !important;
 }
 
 .submit button.btn:hover {

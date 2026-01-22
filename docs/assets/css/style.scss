@@ -15,16 +15,8 @@ h1 {
     text-transform: uppercase;
     color: #E0F76E;
     vertical-align: middle;
-    margin-top: 80px;
-    margin-bottom: 60px;
+    margin-top: 40px;
     padding: 0 20px 0 0;
-}
-
-/* Remove h1 top margin when after button */
-.btn + p + h1,
-p:has(.btn) + h1,
-p.btn-wrapper + h1 {
-    margin-top: 0;
 }
 
 /* Header Styling */
@@ -63,6 +55,14 @@ p.btn-wrapper + h1 {
     gap: 10px;
     position: relative;
     z-index: 1;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.header-brand:hover {
+    text-decoration: none;
+    opacity: 0.8;
 }
 
 .brand-logo {
@@ -145,7 +145,7 @@ a.author:hover {
     align-items: center;
     padding: 8.5px 42px 8.5px 18px;
     margin-top: 22px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     border-radius: 8px;
     background-color: #E0F76E;
     color: #2B2E3B;
@@ -185,6 +185,9 @@ a.author:hover {
 .content, .archive {
     padding: 0px 40px;
     margin: 0px auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 body {
@@ -193,6 +196,9 @@ body {
     padding: 0;
     margin: 0;
     background-color: #262A36;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 code, pre {
@@ -299,7 +305,8 @@ p.btn-wrapper {
 }
 
 .footer {
-    margin-top: 40px;
+    margin-top: auto;
+    padding-top: 20px;
 }
 
 .divider {
@@ -313,7 +320,7 @@ p.btn-wrapper {
 
 .footer ul {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
     font-size: 0.9em;
@@ -322,21 +329,28 @@ p.btn-wrapper {
 
 .footer ul li {
     list-style-type: none;
-    font: 0.8em/1em "Inter Tight", sans-serif;
-    padding: 0 20px 0 0;
+    font: 0.8em/1em "Geist", sans-serif;
     display: flex;
     align-items: center;
     flex-grow: 0;
 }
 
-.footer ul li.social-links {
-    flex-grow: 1;
-    justify-content: flex-end;
+.footer ul li.footer-links {
+    justify-content: flex-start;
     gap: 20px;
+    flex: 1;
 }
 
-.footer ul li:last-child {
-    padding: 0;
+.footer ul li.social-links {
+    justify-content: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.footer ul li.copyright {
+    justify-content: flex-end;
+    flex: 1;
+    color: #E0F76E;
 }
 
 .footer a {
@@ -348,11 +362,12 @@ p.btn-wrapper {
     display: inline-flex;
     align-items: center;
     line-height: 1;
+    color: #FFFFFF;
 }
 
 .footer .social-links svg {
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
 }
 
 .footer .social-links a:last-child svg {
@@ -403,13 +418,18 @@ p.btn-wrapper {
         padding: 0;
     }
 
+    .footer ul li.footer-links {
+        order: 2;
+    }
+
     .footer ul li.social-links {
+        order: 1;
         justify-content: center;
         white-space: normal;
     }
 
     .footer ul li.copyright {
-        order: 999;
+        order: 3;
         width: 100%;
         justify-content: center;
         margin-top: 10px;
