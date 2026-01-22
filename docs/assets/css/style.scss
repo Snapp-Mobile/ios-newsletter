@@ -6,10 +6,180 @@
     margin: 0;
 }
 
-a, a:hover {
+h1 {
+    font-family: "Geist Mono", monospace;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #E0F76E;
+    vertical-align: middle;
+    margin-top: 80px;
+    margin-bottom: 60px;
+    padding: 0 20px 0 0;
+}
+
+/* Remove h1 top margin when after button */
+.btn + p + h1,
+p:has(.btn) + h1,
+p.btn-wrapper + h1 {
+    margin-top: 0;
+}
+
+/* Header Styling */
+.header {
+    background: linear-gradient(135deg, #363948 0%, #363948 100%),
+                repeating-linear-gradient(
+                    35deg,
+                    transparent 0px,
+                    transparent 25px,
+                    rgba(255, 255, 255, 0.12) 25px,
+                    rgba(255, 255, 255, 0.12) 27px
+                );
+    padding: 40px;
+    margin: 0 -40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 135px;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+.header-illustration {
+    position: absolute;
+    right: -55px;
+    top: -100px;
+    bottom: -50px;
+    height: 240%;
+    width: auto;
+    pointer-events: none;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.brand-logo {
+    width: 160px;
+    height: auto;
+}
+
+.header-brand span {
+    display: none;
+}
+
+.header-main {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.header-title {
+    font-family: "Geist", sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 48px;
+    letter-spacing: -1%;
+    vertical-align: middle;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-meta-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-meta-inline {
+    font: 16px "Geist Mono", monospace;
+    color: #a8d300;
+    line-height: 20px;
+    display: block;
+    letter-spacing: 0;
+}
+
+.header-meta-inline:first-child {
+    font-weight: 400;
+}
+
+a {
     font-weight: normal;
-    color: #452be9;
+    color: #E0F76E;
     text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #484D66;
+}
+
+a.author {
+    font-family: "Geist Mono", monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    vertical-align: middle;
+    text-decoration: underline;
+}
+
+a.author:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8.5px 42px 8.5px 18px;
+    margin-top: 22px;
+    margin-bottom: 80px;
+    border-radius: 8px;
+    background-color: #E0F76E;
+    color: #2B2E3B;
+    font-family: "Geist Mono", monospace;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    right: 14px;
+    width: 20px;
+    height: 20px;
+    background-image: url(/assets/images/btn.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: background-image 0.2s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btn:hover {
+    background-color: #484D66;
+    color: #FFFFFF;
+}
+
+.btn:hover::after {
+    background-image: url(/assets/images/btn-hover.svg);
 }
 
 .content, .archive {
@@ -17,33 +187,17 @@ a, a:hover {
     margin: 0px auto;
 }
 
-
 body {
-    font: 1.15em/1.6em Georgia, Verdana, "Times New Roman", serif;
+    font: 400 1em/1.6 "Geist", sans-serif;
     color: #697077;
     padding: 0;
     margin: 0;
+    background-color: #262A36;
 }
 
 code, pre {
     font: 1.0em/1.6em "SF Pro Mono", Menlo, CourierNew, monospace;
     color: #211c3d;
-}
-
-h1 {
-    font: bold 1.2em/2em "Inter Tight", sans-serif;
-    padding: 30px 20px 0px 20px;
-    color: #211c3d;
-}
-
-h1 a, h1 a:hover {
-    font-weight: bold;
-    color: #211c3d;
-}
-
-p.issue_meta {
-    font: 0.7em/1em "Inter Tight", sans-serif;
-    padding: 0 20px 20px 20px;
 }
 
 p.tags {
@@ -52,17 +206,17 @@ p.tags {
     color: #666;
 }
 
-h1 img {
-    vertical-align: middle;
-    margin-top: -4px;
-}
-
 h2 {
-    font: 0.8em/1em "Inter Tight", sans-serif;
+    font-family: "Geist Mono", monospace;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0;
     text-transform: uppercase;
-    margin: 40px 0 0 0;
-    color: #888;
-    padding: 0px 20px;
+    color: #E0F76E;
+    vertical-align: middle;
+    margin: 60px 0 0 0;
+    padding: 0 20px 0 0;
 }
 
 p.pubdate {
@@ -71,29 +225,64 @@ p.pubdate {
 }
 
 h3 {
-    font: bold 1.2em/1.6em "Inter Tight", sans-serif;
+    font-family: "Geist", sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: 0;
     color: #211c3d;
+    vertical-align: middle;
     margin: 40px 0 10px 0px;
 }
 
 .content h3, .archive h3 {
-    border-left: 4px solid #452be9;
+    border-left: 4px solid #E0F76E;
     padding: 0 20px 0 16px;
 }
 
 .content blockquote {
-    font-style: italic; 
+    font-style: italic;
 }
 
 h3 a, h3 a:hover {
-    font-weight: bold;
+    font-family: "Geist", sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: 0;
     color: #211c3d;
+    vertical-align: middle;
     text-decoration: none;
 }
 
 p {
-    margin: 10px 0;
+    margin: 8px 0;
     padding: 0px 20px;
+}
+
+/* Welcome message paragraphs (before first h2) */
+p:not(h2 ~ p) {
+    padding-left: 0;
+    line-height: 1.625;  /* 26px for 16px font */
+    margin: 20px 0;
+}
+
+/* First welcome paragraph - add top spacing after header */
+.content > p:first-of-type {
+    margin-top: 40px;
+}
+
+/* Article description paragraphs (after h2) - restore left padding */
+h2 ~ p {
+    padding-left: 20px;
+}
+
+/* Modern browsers: paragraph containing button */
+p:has(.btn),
+/* Fallback for older browsers: use .btn-wrapper class in markdown */
+p.btn-wrapper {
+    margin: 0;
+    padding: 0;
 }
 
 .footer {
@@ -189,11 +378,6 @@ p {
         padding: 0px 20px;
     }
 
-    h1 img {
-        display: block;
-        margin: 0;
-     }
-
     .footer ul {
         flex-direction: column;
         align-items: center;
@@ -227,25 +411,19 @@ p {
 }
 
 @media (prefers-color-scheme: dark) {
-    a, a:hover {
-        color: #8f80f2;
-    }
-
     body {
-        background-color: rgba(0.706, 0.706, 0.706, 1);
-        border-top: 4px solid #452be9;
         color: #dadada;
     }
 
     .divider {
-        border-top: 1px solid #222;   
+        border-top: 1px solid #222;
     }
 
-    h1, h1 a, h1 a:hover { 
-        color: #eee;
+    h2 {
+        color: #E0F76E;
     }
 
-    h2, p.pubdate { 
+    p.pubdate {
         color: #888;
     }
 

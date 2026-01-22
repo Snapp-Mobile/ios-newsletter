@@ -8,15 +8,15 @@
 
   <div class="header-main">
     {% if include.page %}
-    <h1>
+    <div class="header-title">
       Snapp iOS Weekly
       <div class="header-meta-stack">
         <span class="header-meta-inline">Issue {{ include.page.issue }}</span>
         <span class="header-meta-inline">{{ include.page.date | date: "%B %-d, %Y" }}</span>
       </div>
-    </h1>
+    </div>
     {% elsif include.title %}
-    <h1>{{ include.title }}</h1>
+    <div class="header-title">{{ include.title }}</div>
     {% endif %}
   </div>
 </header>
