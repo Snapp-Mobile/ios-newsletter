@@ -1,9 +1,22 @@
-<h1><a href="{{ "/index.html" | absolute_url }}"><img alt="{{ site.company }}" src = "https://assets-global.website-files.com/635810b251b86c0d78f76c20/635811021547a1def077ef72_Snapp%20Mobile%20Logo.svg" /> iOS Newsletter</a></h1>
+<header class="header">
+  <a href="{{ "/" | absolute_url }}" class="header-brand">
+    <img alt="{{ site.company }}" class="brand-logo" src="{{ "/assets/images/snapp-logo.svg" | absolute_url }}" />
+    <span>{{ site.company }}</span>
+  </a>
 
-{% if include.page %}
-<p class="issue_meta">Issue {{include.page.issue}} • {{include.page.date | date: "%B %-d, %Y"}}</p>
-{% else if include.title %}
-<p class="issue_meta">{{include.title}}</p>
-{% endif %}
+  <div class="header-main">
+    {% if include.page %}
+    <div class="header-title">
+      {{ site.title }}
+      <div class="header-meta-stack">
+        <span class="header-meta-inline">Issue {{ include.page.issue }}</span>
+        <span class="header-meta-inline">{{ include.page.date | date: "%B %-d, %Y" }}</span>
+      </div>
+    </div>
+    {% elsif include.title %}
+    <div class="header-title">{{ include.title }}</div>
+    {% endif %}
+  </div>
+</header>
 
 <div class="divider"></div>
