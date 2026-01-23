@@ -95,14 +95,31 @@
     color: #cacaca;
 }
 
-/* Checkbox styling */
-.optIn .checkbox {
-    border: 2px solid #FFFFFF;
+/* Checkbox styling - override Brevo defaults */
+/* Unchecked state - dark background */
+.sib-form .checkbox {
+    background: #484D66 !important;
+    border: 1px solid #484D66 !important;
+    border-radius: 3px !important;
 }
 
-.optIn .checkbox_tick_positive {
-    background-color: #E0F76E;
-    border-color: #E0F76E;
+/* Hide checkmark when unchecked */
+.sib-form .checkbox::before {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Checked state - accent background with dark checkmark */
+.input_replaced:checked + .checkbox {
+    background: #E0F76E !important;
+    border-color: #E0F76E !important;
+}
+
+/* Dark checkmark when checked - Brevo uses border-color for the checkmark */
+.input_replaced:checked + .checkbox::before {
+    border-color: #484D66 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 /* Brevo declaration block */
