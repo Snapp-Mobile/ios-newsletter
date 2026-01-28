@@ -1,16 +1,19 @@
 ---
 ---
 
+/* Override all Brevo default fonts */
+.sib-form,
+.sib-form * {
+    font-family: "Geist", sans-serif !important;
+}
+
 .sib-form {
     padding: 0;
+    margin-top: 40px;
 }
 
 .sib-form-block {
     padding: 0;
-}
-
-.sib-form .entry__field {
-    margin: 0 20px;
 }
 
 #sib-container {
@@ -18,70 +21,142 @@
     padding: 0;
 }
 
-.brevo, .email, .optIn, .submit {
-    padding: 0px 0px 2em 0px;
+.brevo, .email, .optIn {
+    padding: 0 0 2em 0;
 }
 
-.brevo p, .email .entry__specification, .optIn .entry__specification {
-    font: 0.8em/1.7em "Inter Tight", sans-serif;
-    color: #697077;
+.submit {
+    padding: 0;
 }
 
-.email .entry__specification, .optIn .entry__specification {
-    padding: 0 20px;
+.brevo p,
+.email .entry__specification,
+.optIn .entry__specification {
+    font-size: 0.875em;
+    line-height: 1.6;
+    color: #cacaca;
+}
+
+.email .entry__specification,
+.optIn .entry__specification {
+    padding: 0;
+    margin-top: 8px;
 }
 
 .email .entry__label {
-    font: bold 1.2em "Inter Tight", sans-serif;
-    color: #211c3d;
-    margin: 10px 0 10px 0px;
-}
-
-.sib-form .entry__field {
-    border: 1px solid #ccc;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #fff;
+    margin: 0 0 12px 0;
+    padding: 0;
 }
 
 .content .email .entry__label {
-    border-left: 4px solid #452be9;
-    padding: 0 20px 0 16px;
+    border: none;
+}
+
+.sib-form .entry__field {
+    background: transparent;
+    border: 2px solid #FFFFFF;
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: border-color 0.2s ease;
+    max-width: 400px;
+    margin: 0;
+}
+
+.sib-form .entry__field:has(input:focus),
+.sib-form .entry__field:has(input:not(:placeholder-shown)) {
+    border-color: #E0F76E;
+}
+
+.sib-form .entry__field input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+}
+
+.sib-form .entry__field input::placeholder {
+    color: #888;
 }
 
 .optIn .form__label-row {
-    padding: 0 20px;
+    padding: 0;
 }
 
 .optIn p {
     padding: 0;
-    font: 1.15em/1.6em Georgia, Verdana, "Times New Roman", serif;
-    color: #697077;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cacaca;
+}
+
+/* Checkbox styling - override Brevo defaults */
+/* Unchecked state - dark background */
+.sib-form .checkbox {
+    background: #484D66 !important;
+    border: 1px solid #484D66 !important;
+    border-radius: 3px !important;
+}
+
+/* Hide checkmark when unchecked */
+.sib-form .checkbox::before {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* Checked state - accent background with dark checkmark */
+.input_replaced:checked + .checkbox {
+    background: #E0F76E !important;
+    border-color: #E0F76E !important;
+}
+
+/* Dark checkmark when checked - Brevo uses border-color for the checkmark */
+.input_replaced:checked + .checkbox::before {
+    border-color: #484D66 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Brevo declaration block */
+.sib-form__declaration {
+    direction: ltr;
 }
 
 .submit .sib-form-block {
-    text-align: center;
+    text-align: left;
 }
 
-.submit .sib-form-block__button {
-    margin: 0 auto;
-    background: #452be9;
-    color: #fff;
+/* Button uses .btn class from main stylesheet */
+/* Override Brevo button defaults while keeping functionality classes */
+.submit button.btn {
+    border: none;
+    cursor: pointer;
+    min-height: auto !important;
+    background-color: #E0F76E !important;
+    color: #2B2E3B !important;
+    padding: 8.5px 42px 8.5px 18px !important;
+    font-family: "Geist Mono", monospace !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    line-height: 1.6 !important;
 }
 
-.submit .sib-form-block__button-with-loader {
-    min-width: 280px;
+.submit button.btn:hover {
+    background-color: #484D66 !important;
+    color: #FFFFFF !important;
+}
+
+/* Hide Brevo's loading icon, keep our button arrow */
+.submit button.btn .progress-indicator__icon {
+    display: none !important;
 }
 
 @media (prefers-color-scheme: dark) {
-    .email .entry__label {
-        color: #eee;
-    }
-
-
-    .sib-form .entry__field {
-        background: #222;
-        border: 1px solid #444;
-    }
-
-    .optIn p {
-        color: #cacaca;
-    }
+    /* Colors already defined above work for dark mode */
+    /* Only add overrides if different from base styles */
 }

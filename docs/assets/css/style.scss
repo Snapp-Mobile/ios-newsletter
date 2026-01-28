@@ -6,23 +6,200 @@
     margin: 0;
 }
 
-a, a:hover {
-    font-weight: normal;
-    color: #452be9;
+h1 {
+    font-family: "Geist Mono", monospace;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #E0F76E;
+    vertical-align: middle;
+    margin-top: 40px;
+    padding: 0 20px 0 0;
+}
+
+/* Header Styling */
+.header {
+    background: linear-gradient(135deg, #363948 0%, #363948 100%),
+                repeating-linear-gradient(
+                    35deg,
+                    transparent 0px,
+                    transparent 25px,
+                    rgba(255, 255, 255, 0.12) 25px,
+                    rgba(255, 255, 255, 0.12) 27px
+                );
+    padding: 40px;
+    margin: 0 -40px;
+    position: relative;
+    overflow: hidden;
+    min-height: 135px;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+.header-illustration {
+    position: absolute;
+    right: -55px;
+    top: -100px;
+    bottom: -50px;
+    height: 240%;
+    width: auto;
+    pointer-events: none;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
     text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.header-brand:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.brand-logo {
+    width: 160px;
+    height: auto;
+}
+
+.header-brand span {
+    display: none;
+}
+
+.header-main {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.header-title {
+    font-family: "Geist", sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 48px;
+    letter-spacing: -1%;
+    vertical-align: middle;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-meta-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-meta-inline {
+    font: 16px "Geist Mono", monospace;
+    color: #a8d300;
+    line-height: 20px;
+    display: block;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.header-meta-inline:first-child {
+    font-weight: 400;
+}
+
+a {
+    font-weight: normal;
+    color: #E0F76E;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #484D66;
+}
+
+a.author {
+    font-family: "Geist Mono", monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    color: #FFFFFF;
+    vertical-align: middle;
+    text-decoration: underline;
+}
+
+a.author:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8.5px 42px 8.5px 18px;
+    margin-top: 22px;
+    margin-bottom: 40px;
+    border-radius: 8px;
+    background-color: #E0F76E;
+    color: #2B2E3B;
+    font-family: "Geist Mono", monospace;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    right: 14px;
+    width: 20px;
+    height: 20px;
+    background-image: url(/assets/images/btn.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: background-image 0.2s ease;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btn:hover {
+    background-color: #484D66;
+    color: #FFFFFF;
+}
+
+.btn:hover::after {
+    background-image: url(/assets/images/btn-hover.svg);
 }
 
 .content, .archive {
     padding: 0px 40px;
     margin: 0px auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-
 body {
-    font: 1.15em/1.6em Georgia, Verdana, "Times New Roman", serif;
+    font: 400 1em/1.6 "Geist", sans-serif;
     color: #697077;
     padding: 0;
     margin: 0;
+    background-color: #262A36;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 code, pre {
@@ -30,74 +207,130 @@ code, pre {
     color: #211c3d;
 }
 
-h1 {
-    font: bold 1.2em/2em "Inter Tight", sans-serif;
-    padding: 30px 20px 0px 20px;
-    color: #211c3d;
-}
-
-h1 a, h1 a:hover {
-    font-weight: bold;
-    color: #211c3d;
-}
-
-p.issue_meta {
-    font: 0.7em/1em "Inter Tight", sans-serif;
-    padding: 0 20px 20px 20px;
-}
-
 p.tags {
-    font: 0.9em/1.45em Georgia, Verdana, "Times New Roman", serif;
+    font-family: "Geist", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0;
     padding: 0 20px;
     color: #666;
 }
 
-h1 img {
-    vertical-align: middle;
-    margin-top: -4px;
-}
-
 h2 {
-    font: 0.8em/1em "Inter Tight", sans-serif;
+    font-family: "Geist Mono", monospace;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0;
     text-transform: uppercase;
-    margin: 40px 0 0 0;
-    color: #888;
-    padding: 0px 20px;
+    color: #E0F76E;
+    vertical-align: middle;
+    margin: 60px 0 0 0;
+    padding: 0 20px 0 0;
 }
 
 p.pubdate {
-    font: 0.8em/1em "Inter Tight", sans-serif;
-    color: #888; 
+    font-family: "Geist Mono", monospace;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0;
+    vertical-align: middle;
+    color: #888;
+    padding: 0 20px;
 }
 
 h3 {
-    font: bold 1.2em/1.6em "Inter Tight", sans-serif;
+    font-family: "Geist", sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: 0;
     color: #211c3d;
+    vertical-align: middle;
     margin: 40px 0 10px 0px;
 }
 
 .content h3, .archive h3 {
-    border-left: 4px solid #452be9;
+    border-left: 4px solid #E0F76E;
     padding: 0 20px 0 16px;
 }
 
+/* Archive page spacing */
+.archive h3 {
+    margin-bottom: 16px;
+}
+
+.archive p.pubdate {
+    margin: 0 0 16px 0;
+}
+
+.archive p.tags {
+    margin: 0 0 20px 0;
+}
+
 .content blockquote {
-    font-style: italic; 
+    font-style: italic;
 }
 
 h3 a, h3 a:hover {
-    font-weight: bold;
+    font-family: "Geist", sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: 0;
     color: #211c3d;
+    vertical-align: middle;
     text-decoration: none;
 }
 
+h4 {
+    font-family: "Geist", sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.25;
+    letter-spacing: 0;
+    color: #211c3d;
+    vertical-align: middle;
+    margin: 40px 0 10px 0;
+    padding: 0;
+    border: none;
+}
+
 p {
-    margin: 10px 0;
+    margin: 8px 0;
     padding: 0px 20px;
 }
 
-.footer {
+/* Welcome message paragraphs (before first h2) */
+p:not(h2 ~ p) {
+    padding-left: 0;
+    line-height: 1.625;  /* 26px for 16px font */
+    margin: 20px 0;
+}
+
+/* First welcome paragraph - add top spacing after header */
+.content > p:first-of-type {
     margin-top: 40px;
+}
+
+/* Article description paragraphs (after h2) - restore left padding */
+h2 ~ p {
+    padding-left: 20px;
+}
+
+/* Modern browsers: paragraph containing button */
+p:has(.btn),
+/* Fallback for older browsers: use .btn-wrapper class in markdown */
+p.btn-wrapper {
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    margin-top: auto;
+    padding-top: 20px;
 }
 
 .divider {
@@ -111,7 +344,7 @@ p {
 
 .footer ul {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     padding: 0px 20px;
     font-size: 0.9em;
@@ -120,21 +353,28 @@ p {
 
 .footer ul li {
     list-style-type: none;
-    font: 0.8em/1em "Inter Tight", sans-serif;
-    padding: 0 20px 0 0;
+    font: 0.8em/1em "Geist", sans-serif;
     display: flex;
     align-items: center;
     flex-grow: 0;
 }
 
-.footer ul li.social-links {
-    flex-grow: 1;
-    justify-content: flex-end;
+.footer ul li.footer-links {
+    justify-content: flex-start;
     gap: 20px;
+    flex: 1;
 }
 
-.footer ul li:last-child {
-    padding: 0;
+.footer ul li.social-links {
+    justify-content: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.footer ul li.copyright {
+    justify-content: flex-end;
+    flex: 1;
+    color: #E0F76E;
 }
 
 .footer a {
@@ -146,26 +386,57 @@ p {
     display: inline-flex;
     align-items: center;
     line-height: 1;
+    color: #FFFFFF;
 }
 
 .footer .social-links svg {
-    width: 20px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
 }
 
 .footer .social-links a:last-child svg {
     transform: scale(1.1);
 }
 
+@media only screen and (max-width: 768px) {
+    .header-main h1 {
+        font-size: 36px;
+        line-height: 40px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .header-title {
+        font-size: 36px;
+        line-height: 40px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .header-meta-stack {
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .header-illustration {
+        height: 150%;
+        right: 0;
+        top: 0;
+        bottom: auto;
+    }
+}
+
 @media only screen and (max-width: 640px) {
+    .header {
+        padding: 20px;
+        margin: 0 -20px;
+    }
+
     .content, .archive {
         padding: 0px 20px;
     }
-
-    h1 img {
-        display: block;
-        margin: 0;
-     }
 
     .footer ul {
         flex-direction: column;
@@ -179,13 +450,18 @@ p {
         padding: 0;
     }
 
+    .footer ul li.footer-links {
+        order: 2;
+    }
+
     .footer ul li.social-links {
+        order: 1;
         justify-content: center;
         white-space: normal;
     }
 
     .footer ul li.copyright {
-        order: 999;
+        order: 3;
         width: 100%;
         justify-content: center;
         margin-top: 10px;
@@ -200,29 +476,27 @@ p {
 }
 
 @media (prefers-color-scheme: dark) {
-    a, a:hover {
-        color: #8f80f2;
-    }
-
     body {
-        background-color: rgba(0.706, 0.706, 0.706, 1);
-        border-top: 4px solid #452be9;
         color: #dadada;
     }
 
     .divider {
-        border-top: 1px solid #222;   
+        border-top: 1px solid #222;
     }
 
-    h1, h1 a, h1 a:hover { 
-        color: #eee;
+    h2 {
+        color: #E0F76E;
     }
 
-    h2, p.pubdate { 
-        color: #888;
+    p.pubdate {
+        color: #FFFFFF;
     }
 
     h3, h3 a, h3 a:hover {
+        color: #FFFFFF;
+    }
+
+    h4 {
         color: #eee;
     }
 
@@ -230,8 +504,8 @@ p {
         color: #cacaca;
     }
 
-    p.tags { 
-        color: #ccc;
+    p.tags {
+        color: #FFFFFF;
     }
 
     code, pre {

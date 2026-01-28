@@ -2,15 +2,17 @@
     <div class="divider"></div>
 
     <ul>
-        <li class="copyright">&copy; {{ site.time | date: "%Y"}} Snapp Mobile</li>
+        <li class="footer-links">
+            {% if include.subscribe_link %}
+            <a href="{{ "/subscribe.html" | absolute_url }}">Subscribe</a>
+            {% endif %}
+            {% if include.archive_link %}
+            <a href="{{ "/archive.html" | absolute_url }}">Archive</a>
+            {% endif %}
+        </li>
         <li class="social-links">
             {% include social_buttons.html %}
         </li>
-        {% if include.subscribe_link %}
-        <li><a href="{{ "/subscribe.html" | absolute_url }}">Subscribe</a></li>
-        {% endif %}
-        {% if include.archive_link %}
-        <li><a href="{{ "/archive.html" | absolute_url }}">Archive</a></li>
-        {% endif %}
+        <li class="copyright">&copy; {{ site.time | date: "%Y"}} {{ site.company }}</li>
     </ul>
 </div>
