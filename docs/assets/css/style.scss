@@ -116,13 +116,13 @@ h1 {
 
 a {
     font-weight: normal;
-    color: #E0F76E;
+    color: #FFFFFF;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: #484D66;
+    color: #E0F76E;
 }
 
 a.author {
@@ -193,7 +193,7 @@ a.author:hover {
 
 body {
     font: 400 1em/1.6 "Geist", sans-serif;
-    color: #697077;
+    color: #cacaca;
     padding: 0;
     margin: 0;
     background-color: #262A36;
@@ -204,7 +204,7 @@ body {
 
 code, pre {
     font: 1.0em/1.6em "SF Pro Mono", Menlo, CourierNew, monospace;
-    color: #211c3d;
+    color: #f1f1f1;
 }
 
 p.tags {
@@ -214,7 +214,7 @@ p.tags {
     line-height: 1.6;
     letter-spacing: 0;
     padding: 0 20px;
-    color: #666;
+    color: #FFFFFF;
 }
 
 h2 {
@@ -237,7 +237,7 @@ p.pubdate {
     line-height: 1.6;
     letter-spacing: 0;
     vertical-align: middle;
-    color: #888;
+    color: #FFFFFF;
     padding: 0 20px;
 }
 
@@ -247,7 +247,7 @@ h3 {
     font-size: 36px;
     line-height: 1.25;
     letter-spacing: 0;
-    color: #211c3d;
+    color: #FFFFFF;
     vertical-align: middle;
     margin: 40px 0 10px 0px;
 }
@@ -280,7 +280,7 @@ h3 a, h3 a:hover {
     font-size: 36px;
     line-height: 1.25;
     letter-spacing: 0;
-    color: #211c3d;
+    color: #FFFFFF;
     vertical-align: middle;
     text-decoration: none;
 }
@@ -291,7 +291,7 @@ h4 {
     font-size: 36px;
     line-height: 1.25;
     letter-spacing: 0;
-    color: #211c3d;
+    color: #FFFFFF;
     vertical-align: middle;
     margin: 40px 0 10px 0;
     padding: 0;
@@ -476,39 +476,5 @@ p.btn-wrapper {
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        color: #dadada;
-    }
-
-    .divider {
-        border-top: 1px solid #222;
-    }
-
-    h2 {
-        color: #E0F76E;
-    }
-
-    p.pubdate {
-        color: #FFFFFF;
-    }
-
-    h3, h3 a, h3 a:hover {
-        color: #FFFFFF;
-    }
-
-    h4 {
-        color: #eee;
-    }
-
-    p {
-        color: #cacaca;
-    }
-
-    p.tags {
-        color: #FFFFFF;
-    }
-
-    code, pre {
-        color: #f1f1f1;
-    }
+    /* All colors now consistent across both modes */
 }
