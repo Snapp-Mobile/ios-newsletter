@@ -1,6 +1,6 @@
-# Snapp Mobile iOS Newsletter
+# Snapp iOS Weekly
 
-A repository for Snapp Mobile iOS newsletter
+A repository for Snapp iOS Weekly newsletter
 
 Newletters are posted occasionally on [ios-newsletter.snappmobile.io](https://ios-newsletter.snappmobile.io/).
 
