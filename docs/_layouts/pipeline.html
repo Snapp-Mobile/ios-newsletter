@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
+    <meta property="og:title" content="{{ site.title }} | Article Pipeline">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
+    <meta name="twitter:title" content="{{ site.title }} | Article Pipeline">
+
+    <title>Article Pipeline | {{ site.title }}</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/pipeline.css?v=" | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist-mono">
+
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBZLB3RVT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9RBZLB3RVT');
+    </script>
+  </head>
+
+  <body>
+    <div class="archive">
+      {% include header.html title="Article Pipeline" %}
+
+      {% assign sorted_pipeline = site.pipeline | sort: "published_date" | reverse %}
+
+      <!-- Add Article Form -->
+      <section class="add-article-form" id="addArticleContainer">
+        <div class="form-header" id="formHeader">
+          <h2 class="form-title">Add Article to Pipeline</h2>
+          <button type="button" class="toggle-button" id="toggleButton" aria-label="Toggle form">+</button>
+        </div>
+
+        <div class="form-content" id="formContent">
+          <div class="form-content-inner">
+            <form id="addArticleForm">
+              <div class="form-row">
+                <label for="articleUrl">Article URL</label>
+                <input
+                  type="url"
+                  id="articleUrl"
+                  name="url"
+                  required
+                  placeholder="https://example.com/article"
+                  aria-required="true">
+              </div>
+              <div class="form-row">
+                <button type="submit" class="submit-button">Add to Pipeline</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pipeline Header -->
+      <header class="pipeline-header-info">
+        <div class="pipeline-count">{{ sorted_pipeline.size }} articles in pipeline</div>
+        <div class="pipeline-divider"></div>
+      </header>
+
+      <!-- Pipeline Articles -->
+      <main>
+        {% for article in sorted_pipeline %}
+        <article
+          class="pipeline-article"
+          data-section="{{ article.section }}"
+          data-title="{{ article.title | escape }}"
+          data-url="{{ article.external_url }}"
+          data-author="{{ article.author_name | escape }}"
+          data-author-url="{{ article.author_link }}"
+          data-description="{{ article.description | escape }}">
+
+          <div class="article-header">
+            <h3>
+              <a href="{{ article.external_url }}" target="_blank" rel="noopener noreferrer">
+                {{ article.title }}
+              </a>
+            </h3>
+            <button class="copy-button" aria-label="Copy article to clipboard">Copy</button>
+          </div>
+
+          <div class="article-meta">
+            <span class="article-author-label">by</span>
+            <a href="{{ article.author_link }}" target="_blank" rel="noopener noreferrer" class="article-author">
+              {{ article.author_name }}
+            </a>
+            {% if article.section %}
+            <span class="article-meta-separator" aria-hidden="true">·</span>
+            <span class="article-section">{{ article.section }}</span>
+            {% endif %}
+          </div>
+
+          {% if article.description %}
+          <p class="article-description">{{ article.description }}</p>
+          {% endif %}
+
+          {% if article.published_date %}
+          <div class="article-date">
+            <time datetime="{{ article.published_date }}">
+              {{ article.published_date | date: "%B %-d, %Y" }}
+            </time>
+            {% if article.tags and article.tags.size > 0 %}
+            <span class="article-meta-separator" aria-hidden="true">·</span>
+            <span class="article-tags">{{ article.tags | join: " · " }}</span>
+            {% endif %}
+          </div>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </main>
+
+      {% include footer.html archive_link=true subscribe_link=true %}
+    </div>
+
+    <!-- Pipeline JavaScript -->
+    <script src="{{ "/assets/js/pipeline.js?v=" | append: site.github.build_revision | relative_url }}"></script>
+  </body>
+</html>
