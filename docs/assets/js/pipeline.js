@@ -67,6 +67,8 @@ ${description}`;
       let author = 'Unknown Author';
       let publishDate = null;
 
+      let description = '';
+
       try {
         const response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`);
         const { status, data } = await response.json();
@@ -74,6 +76,7 @@ ${description}`;
         if (status === 'success' && data) {
           title = data.title || title;
           author = data.author || author;
+          description = data.description || '';
           publishDate = data.date || data.published || data.publishedTime || data.created || data.createdTime;
         }
       } catch (error) {
@@ -98,16 +101,18 @@ title: "${title.replace(/"/g, '\\"')}"
 url: "${url}"
 author_name: "${author.replace(/"/g, '\\"')}"
 author_url: ""
-section: "Framework"
-tags: ['Framework']
+section: ""
+tags: []
 description: ""
 published_date: "${dateStr}"
 ---
-<!-- SECTION: Framework -->
+<!-- SECTION: -->
 
 ### [${title}](${url})
 
 [${author}]()
+
+<!-- Author description: ${description.replace(/"/g, '\\"')} -->
 
 `;
 
