@@ -6,3 +6,5 @@ collections:
   issues:
     output: true
     # permalink: /:collection/:name:output_ext
+  pipeline:
+    output: false  # We don't need individual pages, just a list
