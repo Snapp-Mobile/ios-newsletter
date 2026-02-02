@@ -107,12 +107,12 @@ published_date: "${dateStr}"
 
 ### [${title}](${url})
 
-[${author}](${url})
+[${author}]()
 
 `;
 
       // Redirect to GitHub
-      const githubUrl = `https://github.com/Snapp-Mobile/ios-newsletter/new/pipeline?filename=workflow/2-pipeline/articles/${encodeURIComponent(filename)}&value=${encodeURIComponent(content)}`;
+      const githubUrl = `https://github.com/Snapp-Mobile/ios-newsletter/new/main?filename=docs/_pipeline/${encodeURIComponent(filename)}&value=${encodeURIComponent(content)}`;
       window.location.href = githubUrl;
 
     } catch (error) {
