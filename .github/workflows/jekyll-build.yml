@@ -5,19 +5,130 @@ on:
     branches: [main]
 
 jobs:
+  check-duplicates:
+    runs-on: ubuntu-latest
+    if: contains(join(github.event.pull_request.labels.*.name, ','), '') || true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Find added issue files
+        id: find-issues
+        run: |
+          FILES=$(git diff --name-only --diff-filter=A origin/${{ github.base_ref }}...HEAD -- 'docs/_issues/*.md')
+          if [ -z "$FILES" ]; then
+            echo "No new issue files found"
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Found new issue files:"
+            echo "$FILES"
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            echo "files<<EOF" >> "$GITHUB_OUTPUT"
+            echo "$FILES" >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Fetch published articles
+        if: steps.find-issues.outputs.found == 'true'
+        run: |
+          curl -s -H "Authorization: token ${{ secrets.NEWSLETTER_LAB_PAT }}" \
+            -H "Accept: application/vnd.github.v3.raw" \
+            "https://api.github.com/repos/oleksiikolomiietssnapp/newsletter-lab/contents/data/published_articles.json" \
+            -o published_articles.json
+
+      - name: Check for duplicates
+        id: check
+        if: steps.find-issues.outputs.found == 'true'
+        run: |
+          cat << 'SCRIPT' > check_duplicates.py
+          import json
+          import re
+          import sys
+          import os
+
+          with open("published_articles.json") as f:
+              data = json.load(f)
+
+          published_urls = {}
+          for article in data["articles"]:
+              url = article["url"].rstrip("/").lower()
+              published_urls[url] = article
+
+          files = os.environ["ISSUE_FILES"].strip().splitlines()
+          duplicates = []
+
+          for filepath in files:
+              if not os.path.exists(filepath):
+                  continue
+
+              with open(filepath) as f:
+                  content = f.read()
+
+              issue_match = re.search(r'^issue:\s*(\d+)', content, re.MULTILINE)
+              issue_num = issue_match.group(1) if issue_match else "unknown"
+
+              article_urls = re.findall(r'###\s*\[.*?\]\((https?://[^)]+)\)', content)
+
+              for url in article_urls:
+                  normalized = url.rstrip("/").lower()
+                  if normalized in published_urls:
+                      prev = published_urls[normalized]
+                      duplicates.append({
+                          "title": prev["title"],
+                          "url": url,
+                          "prev_issue": prev["issue_number"],
+                          "prev_date": prev["issue_date"],
+                          "current_issue": issue_num
+                      })
+                      print(f"::error file={filepath}::DUPLICATE: \"{prev['title']}\" was already published in Issue {prev['issue_number']} ({prev['issue_date']})")
+
+          if duplicates:
+              # Write comment body for next step
+              comment = "## ⚠️ Duplicate Articles Detected\\n\\n"
+              comment += "The following articles have already been published in previous issues:\\n\\n"
+              for d in duplicates:
+                  comment += f"- **{d['title']}**\\n"
+                  comment += f"  - URL: {d['url']}\\n"
+                  comment += f"  - Previously published in: **Issue {d['prev_issue']}** ({d['prev_date']})\\n\\n"
+              comment += "Please replace these articles before merging."
+
+              with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                  f.write(f"comment<<EOF\n{comment}\nEOF\n")
+                  f.write("has_duplicates=true\n")
+
+              print("\n❌ Duplicate articles found!")
+              sys.exit(1)
+          else:
+              print("✅ No duplicate articles found.")
+          SCRIPT
+
+          ISSUE_FILES="${{ steps.find-issues.outputs.files }}" python3 check_duplicates.py
+
+      - name: Comment on PR
+        if: failure() && steps.check.outputs.has_duplicates == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = `${{ steps.check.outputs.comment }}`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body
+            });
+
   build:
+    needs: check-duplicates
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # Set up Ruby 3.2 (disable bundler-cache since Gemfile creates dynamically)
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler-cache: false
 
-      # Initialize bundler and install required gems
-      # Note: No Gemfile is committed to the repo, so we generate it here
       - name: Set up dependencies
         run: |
           cd docs
