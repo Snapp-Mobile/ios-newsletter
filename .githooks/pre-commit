@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+# Pre-commit hook: detect duplicate article URLs across newsletter issues.
+# Checks any new/modified issue files staged for commit.
+#
+# To enable: git config core.hooksPath .githooks
+# (run once inside the ios-newsletter submodule)
+
+ISSUES_DIR="docs/_issues"
+ERRORS=0
+
+# Find staged issue files
+STAGED_ISSUES=$(git diff --cached --name-only | grep "^${ISSUES_DIR}/.*\.md$")
+
+if [ -z "$STAGED_ISSUES" ]; then
+  exit 0
+fi
+
+echo "🔍 Checking for duplicate article URLs..."
+
+for issue_file in $STAGED_ISSUES; do
+  # Extract article URLs only from ### heading lines (not author attribution links)
+  URLS=$(git show ":${issue_file}" | grep '^### \[' | grep -oE 'https?://[^)]+' | sort -u)
+
+  for url in $URLS; do
+    # Search all existing issue files, excluding the file being committed
+    matches=$(grep -rn "$url" "$ISSUES_DIR" --include="*.md" \
+      | grep -v "$(basename "$issue_file")")
+
+    if [ -n "$matches" ]; then
+      echo ""
+      echo "⚠️  DUPLICATE URL found in $(basename "$issue_file"):"
+      echo "   $url"
+      echo "   Already in:"
+      echo "$matches" | sed 's/^/   /'
+      ERRORS=$((ERRORS + 1))
+    fi
+  done
+done
+
+if [ "$ERRORS" -gt 0 ]; then
+  echo ""
+  echo "❌ Found $ERRORS duplicate article URL(s). Please review before committing."
+  echo "   To bypass (not recommended): git commit --no-verify"
+  exit 1
+fi
+
+echo "✅ No duplicate article URLs found."
+exit 0
