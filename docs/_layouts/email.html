@@ -12,38 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <style type="text/css">
-        :root{
-           color-scheme: light dark;
-            supported-color-schemes: light dark;
-        }
-        
-        {{ site.data.styles }}
-
-        /* Email-only readability overrides.
-           Web styles above stay untouched; these apply solely to the email layout.
-           Font sizes are relative (em) so they scale with the reader's default
-           text size and never render below it. */
-        body {
-            font-size: 1.25em;
-            line-height: 1.6;
-        }
-
-        p {
-            font-size: 1.1em;
-            margin: 14px 0;
-        }
-
-        h3 {
-            margin-top: 48px;
-        }
-
-        a.author {
-            font-size: 0.9em;
-        }
-
-        .footer ul li {
-            font-size: 0.9em;
-        }
+:root{color-scheme:light dark;supported-color-schemes:light dark}*{padding:0;margin:0}h1{font-family:"Geist Mono",monospace;font-weight:500;font-size:28px;line-height:1.2;letter-spacing:0;text-transform:uppercase;color:#E0F76E;vertical-align:middle;margin-top:40px;padding:0 20px 0 0}.header{background:linear-gradient(135deg,#363948 0%,#363948 100%),repeating-linear-gradient(35deg,transparent 0,transparent 25px,rgba(255,255,255,.12) 25px,rgba(255,255,255,.12) 27px);padding:40px;margin:0 -40px;position:relative;overflow:hidden;min-height:135px;display:flex;flex-direction:column;gap:34px}.header-illustration{position:absolute;right:-55px;top:-100px;bottom:-50px;height:240%;width:auto;pointer-events:none}.header-brand{display:flex;align-items:center;gap:10px;position:relative;z-index:1;text-decoration:none;color:inherit;cursor:pointer}.header-brand:hover{text-decoration:none;opacity:.8}.brand-logo{width:160px;height:auto}.header-brand span{display:none}.header-main{flex:1;position:relative;z-index:1}.header-title{font-family:"Geist",sans-serif;font-weight:500;font-size:50px;line-height:48px;letter-spacing:-1%;vertical-align:middle;color:#fff;padding:0;margin:0;display:flex;align-items:center;gap:20px}.header-meta-stack{display:flex;flex-direction:column;gap:2px}.header-meta-inline{font:16px "Geist Mono",monospace;color:#a8d300;line-height:20px;display:block;letter-spacing:0;white-space:nowrap}.header-meta-inline:first-child{font-weight:400}a{font-weight:400;color:#fff;text-decoration:none;transition:color .2s ease}a:hover{color:#E0F76E}a.author{font-family:"Geist Mono",monospace;font-weight:400;font-size:14px;line-height:1.6;letter-spacing:0;color:#fff;vertical-align:middle;text-decoration:underline}a.author:hover{color:#fff;text-decoration:underline}.btn{display:inline-flex;align-items:center;padding:8.5px 42px 8.5px 18px;margin-top:22px;margin-bottom:40px;border-radius:8px;background-color:#E0F76E;color:#2B2E3B;font-family:"Geist Mono",monospace;font-weight:500;font-size:18px;line-height:1.6;letter-spacing:0;text-decoration:none;transition:all .2s ease;position:relative}.btn::after{content:"";position:absolute;right:14px;width:20px;height:20px;background-image:url(https://ios-newsletter.snappmobile.io/assets/images/btn.svg);background-size:contain;background-repeat:no-repeat;transition:background-image .2s ease;top:50%;transform:translateY(-50%)}.btn:hover{background-color:#484D66;color:#fff}.btn:hover::after{background-image:url(https://ios-newsletter.snappmobile.io/assets/images/btn-hover.svg)}.content,.archive{padding:0 40px;margin:0 auto;flex:1;display:flex;flex-direction:column}body{font:400 16px/1.6 "Geist",sans-serif;color:#cacaca;padding:0;margin:0;background-color:#262A36;display:flex;flex-direction:column;min-height:100vh}code,pre{font:16px/26px "SF Pro Mono",Menlo,CourierNew,monospace;color:#f1f1f1}p.tags{font-family:"Geist",sans-serif;font-weight:400;font-size:16px;line-height:1.6;letter-spacing:0;padding:0 20px;color:#fff}h2{font-family:"Geist Mono",monospace;font-weight:500;font-size:22px;line-height:1.2;letter-spacing:0;text-transform:uppercase;color:#E0F76E;vertical-align:middle;margin:60px 0 0;padding:0 20px 0 0}p.pubdate{font-family:"Geist Mono",monospace;font-weight:400;font-size:14px;line-height:1.6;letter-spacing:0;vertical-align:middle;color:#fff;padding:0 20px}h3{font-family:"Geist",sans-serif;font-weight:400;font-size:36px;line-height:1.25;letter-spacing:0;color:#fff;vertical-align:middle;margin:40px 0 10px}.content h3,.archive h3{border-left:4px solid #E0F76E;padding:0 20px 0 16px}.archive h3{margin-bottom:16px}.archive p.pubdate{margin:0 0 16px}.archive p.tags{margin:0 0 20px}.content blockquote{font-style:italic}h3 a,h3 a:hover{font-family:"Geist",sans-serif;font-weight:400;font-size:36px;line-height:1.25;letter-spacing:0;color:#fff;vertical-align:middle;text-decoration:none}h4{font-family:"Geist",sans-serif;font-weight:400;font-size:36px;line-height:1.25;letter-spacing:0;color:#fff;vertical-align:middle;margin:40px 0 10px;padding:0;border:none}p{margin:8px 0;padding:0 20px}p:not(h2~p){padding-left:0;line-height:1.625;margin:20px 0}.content>p:first-of-type{margin-top:40px}h2~p{padding-left:20px}p:has(.btn),p.btn-wrapper{margin:0;padding:0}.footer{margin-top:auto;padding-top:20px}.divider{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}.footer ul{display:flex;justify-content:space-between;align-items:center;padding:0 20px;font-size:14px;margin:20px 0}.footer ul li{list-style-type:none;font:13px/16px "Geist",sans-serif;display:flex;align-items:center;flex-grow:0}.footer ul li.footer-links{justify-content:flex-start;gap:20px;flex:1}.footer ul li.social-links{justify-content:center;gap:20px;flex:1}.footer ul li.copyright{justify-content:flex-end;flex:1;color:#E0F76E}.footer a{text-transform:uppercase;font-weight:400}.footer .social-links a{display:inline-flex;align-items:center;line-height:1;color:#fff}.footer .social-links svg{width:32px;height:32px}.footer .social-links a:last-child svg{transform:scale(1.1)}@media only screen and (max-width:768px){.header-main h1{font-size:36px;line-height:40px;flex-direction:column;align-items:flex-start;gap:12px}.header-title{font-size:36px;line-height:40px;flex-direction:column;align-items:flex-start;gap:12px}.header-meta-stack{width:100%;align-items:flex-start}.header-illustration{height:150%;right:0;top:0;bottom:auto}}@media only screen and (max-width:640px){.header{padding:20px;margin:0 -20px}.content,.archive{padding:0 20px}.footer ul{flex-direction:column;align-items:center;gap:10px}.footer ul li{white-space:nowrap;justify-content:center;padding:0}.footer ul li.footer-links{order:2}.footer ul li.social-links{order:1;justify-content:center;white-space:normal}.footer ul li.copyright{order:3;width:100%;justify-content:center;margin-top:10px}}@media only screen and (min-width:1024px){.content,.archive{width:980px;padding:0}}
     </style>
   </head>
   <body>
