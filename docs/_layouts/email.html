@@ -18,6 +18,32 @@
         }
         
         {{ site.data.styles }}
+
+        /* Email-only readability overrides.
+           Web styles above stay untouched; these apply solely to the email layout.
+           Font sizes are relative (em) so they scale with the reader's default
+           text size and never render below it. */
+        body {
+            font-size: 1.25em;
+            line-height: 1.6;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin: 14px 0;
+        }
+
+        h3 {
+            margin-top: 48px;
+        }
+
+        a.author {
+            font-size: 0.9em;
+        }
+
+        .footer ul li {
+            font-size: 0.9em;
+        }
     </style>
   </head>
   <body>
