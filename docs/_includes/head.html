@@ -1,0 +1,118 @@
+{%- comment %}
+  The single <head> for every web layout. Before this include the same block was
+  copy-pasted into six layouts, which is how the feed link ended up on one page
+  and the meta description on none.
+
+  Parameters (all optional):
+    title       page title; falls back to page.title, then the site title
+    description meta description; falls back to the site description
+    canonical   canonical URL; falls back to page.url
+    og_type     "article" on issue pages (adds BlogPosting JSON-LD), else "website"
+    styles      extra stylesheets to load: "pipeline", "subscribe"
+    published   ISO date for article metadata (issue pages)
+
+  Kept deliberately plugin-free: GitHub Pages builds in safe mode, so anything
+  that needs a gem (jekyll-seo-tag, jekyll-feed, _plugins/) would silently do
+  nothing in production.
+{%- endcomment %}
+{%- assign head_title = include.title | default: page.title | default: site.title %}
+{%- assign head_description = include.description | default: site.description %}
+{%- assign head_canonical = include.canonical | default: page.url | absolute_url %}
+{%- assign head_type = include.og_type | default: "website" %}
+{%- assign head_image = "/assets/images/newsletter_social.jpg" | absolute_url %}
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ head_title | escape }}</title>
+    <meta name="description" content="{{ head_description | strip_newlines | escape }}">
+    <link rel="canonical" href="{{ head_canonical }}">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:site_name" content="{{ site.title }}">
+    <meta property="og:type" content="{{ head_type }}">
+    <meta property="og:url" content="{{ head_canonical }}">
+    <meta property="og:title" content="{{ head_title | escape }}">
+    <meta property="og:description" content="{{ head_description | strip_newlines | escape }}">
+    <meta property="og:image" content="{{ head_image }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ site.title }}, weekly iOS and Swift newsletter">
+    {%- if include.published %}
+    <meta property="article:published_time" content="{{ include.published | date_to_xmlschema }}">
+    {%- endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ head_title | escape }}">
+    <meta name="twitter:description" content="{{ head_description | strip_newlines | escape }}">
+    <meta name="twitter:image" content="{{ head_image }}">
+    <meta name="fediverse:creator" content="@ios_newsletter_snapp@mastodon.social">
+
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | absolute_url }}">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    {%- if include.styles contains "pipeline" %}
+    <link rel="stylesheet" href="{{ "/assets/css/pipeline.css?v=" | append: site.github.build_revision | relative_url }}">
+    {%- endif %}
+    {%- if include.styles contains "subscribe" %}
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+    <link rel="stylesheet" href="{{ "/assets/css/subscribe.css?v=" | append: site.github.build_revision | relative_url }}">
+    {%- endif %}
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist-mono" type="text/css"/>
+
+    {%- if head_type == "article" %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": {{ head_title | jsonify }},
+      "description": {{ head_description | strip_newlines | jsonify }},
+      "url": {{ head_canonical | jsonify }},
+      "mainEntityOfPage": {{ head_canonical | jsonify }},
+      "datePublished": {{ include.published | default: page.date | date_to_xmlschema | jsonify }},
+      "image": {{ head_image | jsonify }},
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "Blog",
+        "name": {{ site.title | jsonify }},
+        "url": {{ "/" | absolute_url | jsonify }}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ site.company | jsonify }},
+        "url": {{ "/" | absolute_url | jsonify }}
+      }
+    }
+    </script>
+    {%- endif %}
+    {%- if include.home %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": {{ site.title | jsonify }},
+      "alternateName": "iOS Newsletter",
+      "url": {{ "/" | absolute_url | jsonify }},
+      "description": {{ site.description | jsonify }},
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ site.company | jsonify }},
+        "url": {{ "/" | absolute_url | jsonify }},
+        "logo": {{ "/assets/images/snapp-logo.svg" | absolute_url | jsonify }}
+      }
+    }
+    </script>
+    {%- endif %}
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBZLB3RVT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9RBZLB3RVT');
+    </script>
+  </head>

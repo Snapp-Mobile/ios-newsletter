@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
-    <meta property="og:title" content="{{ site.title }}">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
-    <meta name="twitter:title" content="{{ site.title }}">
-    <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | absolute_url }}">
-    <title>{{ site.issues.last.title }}</title>
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist" type="text/css"/>
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist-mono" type="text/css"/>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBZLB3RVT"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+{%- comment %}
+  The homepage mirrors the newest issue in full — that is deliberate and stays.
+  What changed is its identity: a fixed brand title and description instead of
+  the issue's, plus a self-canonical. Google had / indexed as three different
+  issue numbers at once because the title rotated every Friday; now it does not.
+  The issue's own URL is reachable from the archive, which the footer links.
 
-      gtag('config', 'G-9RBZLB3RVT');
-    </script>
-  </head>
+  `site.issues.last` sorts strings, so issue-99 came after issue-100 — the
+  committed build output has shipped with the wrong "latest" issue before. Sort
+  by date instead.
+{%- endcomment %}
+{%- assign latest = site.issues | sort: "date" | last %}
+{%- assign home_canonical = "/" | absolute_url %}
+{%- include head.html
+      title=site.home_title
+      description=site.description
+      canonical=home_canonical
+      og_type="website"
+      home=true %}
   <body>
     <div class="content">
-      {% include header.html page=site.issues.last %}
-      
-      {{ site.issues.last.content }}
+      {% include header.html page=latest %}
+
+      {{ latest.content }}
 
       {% include footer.html archive_link=true subscribe_link=true %}
     </div>

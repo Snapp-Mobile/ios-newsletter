@@ -1,35 +1,10 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Open Graph / Social -->
-    <meta property="og:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
-    <meta property="og:title" content="{{ site.title }} | Article Pipeline">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
-    <meta name="twitter:title" content="{{ site.title }} | Article Pipeline">
-
-    <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | absolute_url }}">
-    <title>Article Pipeline | {{ site.title }}</title>
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <link rel="stylesheet" href="{{ "/assets/css/pipeline.css?v=" | append: site.github.build_revision | relative_url }}">
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist">
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist-mono">
-
-    <!-- Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBZLB3RVT"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-9RBZLB3RVT');
-    </script>
-  </head>
+{%- include head.html
+      title="Article Pipeline — Snapp iOS Weekly"
+      description="Articles queued for a future issue of Snapp iOS Weekly."
+      og_type="website"
+      styles="pipeline" %}
 
   <body>
     <div class="archive">
