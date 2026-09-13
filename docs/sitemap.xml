@@ -1,0 +1,49 @@
+---
+layout: null
+permalink: /sitemap.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{%- comment %}
+  Hand-rolled rather than jekyll-sitemap: GitHub Pages builds in safe mode and
+  only runs whitelisted plugins listed under `plugins:` in _config.yml, and this
+  site has no `plugins:` key at all. A template always works.
+
+  /pipeline.html is deliberately excluded — it is an internal editorial queue.
+{%- endcomment %}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {%- assign issues = site.issues | sort: "date" | reverse %}
+  {%- assign latest = issues | first %}
+  <url>
+    <loc>{{ "/" | absolute_url }}</loc>
+    <lastmod>{{ latest.date | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>{{ "/archive.html" | absolute_url }}</loc>
+    <lastmod>{{ latest.date | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>{{ "/subscribe.html" | absolute_url }}</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  {%- for topic in site.topics %}
+  <url>
+    <loc>{{ topic.url | absolute_url }}</loc>
+    <lastmod>{{ latest.date | date_to_xmlschema }}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  {%- endfor %}
+  {%- for issue in issues %}
+  <url>
+    <loc>{{ issue.url | absolute_url }}</loc>
+    <lastmod>{{ issue.date | date_to_xmlschema }}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  {%- endfor %}
+</urlset>

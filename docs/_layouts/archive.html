@@ -1,41 +1,24 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
-    <meta property="og:title" content="{{ site.title }} | Archived issues">
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="{{ "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url }}">
-    <meta name="twitter:title" content="{{ site.title }} | Archived issues">
-    <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | absolute_url }}">
-    <title>Archived Issues</title>
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist" type="text/css"/>
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/geist-mono" type="text/css"/>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBZLB3RVT"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-9RBZLB3RVT');
-    </script>
-  </head>
+{%- assign archive_description = "Every issue of Snapp iOS Weekly: " | append: site.issues.size | append: " weeks of curated iOS and Swift articles with editorial commentary." %}
+{%- capture archive_heading %}{{ site.short_title | default: site.title }} - Archive{% endcapture %}
+{%- capture archive_title %}{{ site.title }} - Archive{% endcapture %}
+{%- include head.html
+      title=archive_title
+      description=archive_description
+      og_type="website" %}
   <body>
     <div class="archive">
-      {% include header.html title="Archived Issues" %}
-      
-      {% for issue in site.issues reversed %}
+      {% include header.html title=archive_heading %}
 
-      <h3><a href="{{issue.url}}">Issue {{issue.issue}}</a></h3>
-      <p class="pubdate">{{issue.date | date: "%B %-d, %Y"}}</p>
-      <p class="tags">{{issue.tags | join: "  &#8226; "}}</p>
+      {%- assign issues = site.issues | sort: "date" | reverse %}
+      {% for issue in issues %}
+
+      <h3><a href="{{ issue.url }}">Issue {{ issue.issue }}</a></h3>
+      <p class="pubdate">{{ issue.date | date: "%B %-d, %Y" }}</p>
 
       {% endfor %}
-    
+
       {% include footer.html archive_link=false subscribe_link=true %}
     </div>
   </body>

@@ -1,6 +1,9 @@
 theme: jekyll-theme-minimal
 title: "Snapp iOS Weekly"
 company: "Snapp Technology"
+short_title: "iOS Weekly"
+description: "Weekly curated iOS and Swift articles with editorial commentary, every Friday from Snapp Technology."
+home_title: "Snapp iOS Weekly: Swift & iOS news, every Friday"
 url: "https://ios-newsletter.snappmobile.io"
 
 collections:
