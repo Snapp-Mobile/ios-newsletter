@@ -3,29 +3,50 @@ layout: null
 permalink: /feed.xml
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ site.lang | default: 'en-US' }}">
   <title>{{ site.title | xml_escape }}</title>
   <subtitle>Weekly iOS and Swift development newsletter</subtitle>
   <link href="{{ "/feed.xml" | absolute_url }}" rel="self" type="application/atom+xml"/>
   <link href="{{ "/" | absolute_url }}" rel="alternate" type="text/html"/>
   <id>{{ "/" | absolute_url | xml_escape }}</id>
+  <icon>{{ "/assets/images/newsletter_social.jpg" | absolute_url }}</icon>
+  <logo>{{ "/assets/images/newsletter_social.jpg" | absolute_url }}</logo>
   <author>
     <name>{{ site.company | xml_escape }}</name>
+    <uri>{{ "/" | absolute_url }}</uri>
   </author>
+  <rights>© {{ 'now' | date: "%Y" }} {{ site.company | xml_escape }}</rights>
   {%- assign issues = site.issues | sort: "date" | reverse %}
   {%- assign latest = issues | first %}
   <updated>{{ latest.date | date_to_xmlschema }}</updated>
+  {%- comment %}
+    Issue bodies contain root-relative links (every issue carries
+    [Subscribe](/subscribe), plus relative asset paths). A feed reader has no
+    base URL to resolve those against, so they have to be absolute before the
+    body is escaped into <content>.
+  {%- endcomment %}
+  {%- capture href_prefix %}href="{{ site.url }}/{% endcapture %}
+  {%- capture src_prefix %}src="{{ site.url }}/{% endcapture %}
   {%- for issue in issues limit: 20 %}
+  {%- assign body = issue.content | replace: 'href="/', href_prefix | replace: 'src="/', src_prefix %}
   <entry>
-    <title>{{ issue.title | xml_escape }}</title>
+    <title>{{ issue.seo_title | default: issue.title | xml_escape }}</title>
     <link href="{{ issue.url | absolute_url }}" rel="alternate" type="text/html"/>
     <id>{{ issue.url | absolute_url | xml_escape }}</id>
     <published>{{ issue.date | date_to_xmlschema }}</published>
     <updated>{{ issue.date | date_to_xmlschema }}</updated>
+    <author>
+      <name>{{ issue.author | default: site.company | xml_escape }}</name>
+    </author>
     {%- for tag in issue.tags %}
     <category term="{{ tag | xml_escape }}"/>
     {%- endfor %}
-    <content type="html">{{ issue.content | xml_escape }}</content>
+    {%- if issue.description %}
+    <summary type="text">{{ issue.description | xml_escape }}</summary>
+    {%- else %}
+    <summary type="text">{{ issue.content | strip_html | normalize_whitespace | truncatewords: 40 | xml_escape }}</summary>
+    {%- endif %}
+    <content type="html">{{ body | xml_escape }}</content>
   </entry>
   {%- endfor %}
 </feed>
