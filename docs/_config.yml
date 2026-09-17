@@ -1,6 +1,7 @@
 theme: jekyll-theme-minimal
 title: "Snapp iOS Weekly"
 company: "Snapp Technology"
+url: "https://ios-newsletter.snappmobile.io"
 
 collections:
   issues:

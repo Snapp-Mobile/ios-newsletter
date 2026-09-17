@@ -394,8 +394,12 @@ p.btn-wrapper {
     height: 32px;
 }
 
-.footer .social-links a:last-child svg {
+.footer .social-links a:nth-child(2) svg {
     transform: scale(1.1);
+}
+
+.footer .social-links a:nth-child(3) svg {
+    transform: scale(1.3);
 }
 
 @media only screen and (max-width: 768px) {
@@ -452,6 +456,8 @@ p.btn-wrapper {
 
     .footer ul li.footer-links {
         order: 2;
+        justify-content: center;
+        gap: 28px;
     }
 
     .footer ul li.social-links {
