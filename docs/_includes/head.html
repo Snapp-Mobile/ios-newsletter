@@ -1,20 +1,3 @@
-{%- comment %}
-  The single <head> for every web layout. Before this include the same block was
-  copy-pasted into six layouts, which is how the feed link ended up on one page
-  and the meta description on none.
-
-  Parameters (all optional):
-    title       page title; falls back to page.title, then the site title
-    description meta description; falls back to the site description
-    canonical   canonical URL; falls back to page.url
-    og_type     "article" on issue pages (adds BlogPosting JSON-LD), else "website"
-    styles      extra stylesheets to load: "pipeline", "subscribe"
-    published   ISO date for article metadata (issue pages)
-
-  Kept deliberately plugin-free: GitHub Pages builds in safe mode, so anything
-  that needs a gem (jekyll-seo-tag, jekyll-feed, _plugins/) would silently do
-  nothing in production.
-{%- endcomment %}
 {%- assign head_title = include.title | default: page.title | default: site.title %}
 {%- assign head_description = include.description | default: site.description %}
 {%- assign head_canonical = include.canonical | default: page.url | absolute_url %}

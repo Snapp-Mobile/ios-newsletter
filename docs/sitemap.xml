@@ -3,13 +3,6 @@ layout: null
 permalink: /sitemap.xml
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-{%- comment %}
-  Hand-rolled rather than jekyll-sitemap: GitHub Pages builds in safe mode and
-  only runs whitelisted plugins listed under `plugins:` in _config.yml, and this
-  site has no `plugins:` key at all. A template always works.
-
-  /pipeline.html is deliberately excluded — it is an internal editorial queue.
-{%- endcomment %}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {%- assign issues = site.issues | sort: "date" | reverse %}
   {%- assign latest = issues | first %}
