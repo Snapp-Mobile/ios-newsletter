@@ -19,7 +19,7 @@
 {%- assign head_description = include.description | default: site.description %}
 {%- assign head_canonical = include.canonical | default: page.url | absolute_url %}
 {%- assign head_type = include.og_type | default: "website" %}
-{%- assign head_image = "/assets/images/newsletter_social.jpg" | absolute_url %}
+{%- assign head_image = "/assets/images/newsletter_social.jpg?v=" | append: site.github.build_revision | absolute_url %}
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,7 +82,7 @@
       "publisher": {
         "@type": "Organization",
         "name": {{ site.company | jsonify }},
-        "url": {{ "/" | absolute_url | jsonify }}
+        "url": {{ site.company_url | jsonify }}
       }
     }
     </script>
@@ -99,7 +99,7 @@
       "publisher": {
         "@type": "Organization",
         "name": {{ site.company | jsonify }},
-        "url": {{ "/" | absolute_url | jsonify }},
+        "url": {{ site.company_url | jsonify }},
         "logo": {{ "/assets/images/snapp-logo.svg" | absolute_url | jsonify }}
       }
     }
