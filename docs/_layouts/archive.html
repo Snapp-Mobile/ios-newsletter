@@ -10,7 +10,7 @@
   <body>
     <div class="archive">
       {% include header.html title=archive_heading %}
-
+      
       {%- assign issues = site.issues | sort: "date" | reverse %}
       {% for issue in issues %}
 
@@ -19,7 +19,7 @@
       <p class="tags">{{ issue.tags | join: "  &#8226; " }}</p>
 
       {% endfor %}
-
+    
       {% include footer.html archive_link=false subscribe_link=true %}
     </div>
   </body>
