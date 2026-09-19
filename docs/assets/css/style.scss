@@ -86,6 +86,9 @@ h1 {
     font-size: 50px;
     line-height: 48px;
     letter-spacing: -1%;
+    /* the element is an <h1> now, so the global h1 rule's uppercase would
+       otherwise shout the brand name */
+    text-transform: none;
     vertical-align: middle;
     color: #fff;
     padding: 0;
