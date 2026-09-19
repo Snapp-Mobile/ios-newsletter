@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
+{%- capture pipeline_title %}Article Pipeline - {{ site.title }}{% endcapture %}
 {%- include head.html
-      title="Article Pipeline — Snapp iOS Weekly"
+      title=pipeline_title
       description="Articles queued for a future issue of Snapp iOS Weekly."
       og_type="website"
       styles="pipeline" %}

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
 {%- assign subscribe_description = "Subscribe to Snapp iOS Weekly: one email every Friday with curated iOS and Swift articles and a short note on why each one matters." %}
+{%- capture subscribe_title %}Subscribe - {{ site.title }}{% endcapture %}
 {%- include head.html
-      title="Subscribe — Snapp iOS Weekly"
+      title=subscribe_title
       description=subscribe_description
       og_type="website"
       styles="subscribe" %}
