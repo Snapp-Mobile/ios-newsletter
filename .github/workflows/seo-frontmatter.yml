@@ -1,0 +1,61 @@
+name: SEO front matter
+
+# When an issue lands in a pull request, derive its seo_title, description and
+# sections from the issue itself and commit them back to the branch, so the page
+# ships with its own metadata instead of the site-wide fallback.
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "docs/_issues/**"
+
+permissions:
+  contents: write
+
+jobs:
+  frontmatter:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Derive the front matter
+        run: python3 -m tools.seo
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: false
+
+      # The commit below is pushed with GITHUB_TOKEN, which by design does not
+      # retrigger workflows — jekyll-build will never see it. Build here instead,
+      # so nothing merges unbuilt.
+      - name: Build the site with the derived front matter
+        run: |
+          set -euo pipefail
+          cd docs
+          bundle init
+          bundle add jekyll jekyll-theme-minimal
+          bundle exec jekyll build
+
+      - name: Commit it back
+        # Forks cannot be pushed to; report instead.
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- docs/_issues
+          if git diff --cached --quiet; then
+            echo "front matter already up to date"
+            exit 0
+          fi
+          git commit -m "Add the derived SEO front matter"
+          git push
