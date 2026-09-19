@@ -9,7 +9,7 @@
   <div class="header-main">
     {% if include.page %}
     <h1 class="header-title">
-      {{ site.short_title | default: site.title }}
+      {{ site.title }}
       <span class="header-meta-stack">
         <span class="header-meta-inline">Issue {{ include.page.issue }}</span>
         <span class="header-meta-inline">{{ include.page.date | date: "%B %-d, %Y" }}</span>

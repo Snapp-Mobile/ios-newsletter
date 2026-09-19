@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
 {%- assign archive_description = "Every issue of Snapp iOS Weekly: " | append: site.issues.size | append: " weeks of curated iOS and Swift articles with editorial commentary." %}
-{%- capture archive_heading %}{{ site.short_title | default: site.title }} - Archive{% endcapture %}
+{%- capture archive_heading %}{{ site.title }} - Archive{% endcapture %}
 {%- capture archive_title %}{{ site.title }} - Archive{% endcapture %}
 {%- include head.html
       title=archive_title
@@ -16,6 +16,7 @@
 
       <h3><a href="{{ issue.url }}">Issue {{ issue.issue }}</a></h3>
       <p class="pubdate">{{ issue.date | date: "%B %-d, %Y" }}</p>
+      <p class="tags">{{ issue.tags | join: "  &#8226; " }}</p>
 
       {% endfor %}
 
