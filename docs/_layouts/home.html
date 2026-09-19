@@ -1,16 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
-{%- comment %}
-  The homepage mirrors the newest issue in full — that is deliberate and stays.
-  What changed is its identity: a fixed brand title and description instead of
-  the issue's, plus a self-canonical. Google had / indexed as three different
-  issue numbers at once because the title rotated every Friday; now it does not.
-  The issue's own URL is reachable from the archive, which the footer links.
-
-  `site.issues.last` sorts strings, so issue-99 came after issue-100 — the
-  committed build output has shipped with the wrong "latest" issue before. Sort
-  by date instead.
-{%- endcomment %}
 {%- assign latest = site.issues | sort: "date" | last %}
 {%- assign home_canonical = "/" | absolute_url %}
 {%- include head.html
