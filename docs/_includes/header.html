@@ -8,15 +8,15 @@
 
   <div class="header-main">
     {% if include.page %}
-    <div class="header-title">
+    <h1 class="header-title">
       {{ site.title }}
-      <div class="header-meta-stack">
+      <span class="header-meta-stack">
         <span class="header-meta-inline">Issue {{ include.page.issue }}</span>
         <span class="header-meta-inline">{{ include.page.date | date: "%B %-d, %Y" }}</span>
-      </div>
-    </div>
+      </span>
+    </h1>
     {% elsif include.title %}
-    <div class="header-title">{{ include.title }}</div>
+    <h1 class="header-title">{{ include.title }}</h1>
     {% endif %}
   </div>
 </header>
