@@ -6,9 +6,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Set up Ruby 3.2 (disable bundler-cache since Gemfile creates dynamically)
       - uses: ruby/setup-ruby@v1
